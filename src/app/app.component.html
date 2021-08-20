@@ -1,17 +1,35 @@
+<!-- Main div of the application -->
 <div class="main-container">
-    <app-header [sidenav]="leftSidenav"></app-header>
-  
-    <mat-sidenav-container class="sidenav-container" [hasBackdrop]="screenWidth<769">
-      <mat-sidenav #leftSidenav [mode]="screenWidth>=769 ? 'side' : 'over'" opened>
-        <app-left-menu></app-left-menu>
-      </mat-sidenav>
-      <mat-sidenav-content [@onMainContentChange]="check()">
-        <div class="main_content">
-          <div style="padding: 20px">
-            <router-outlet></router-outlet>
-          </div>
+
+  <!-- HEADER -->
+  <app-header [sidenav]="leftSidenav"></app-header>
+
+  <!-- SIDEBAR AND MAIN_CONTENT -->
+  <mat-sidenav-container
+    class="sidenav-container"
+    [hasBackdrop]="screenWidth < minimumWidth"
+  >
+    <!-- SIDEBAR -->
+    <mat-sidenav
+      #leftSidenav
+      [mode]="screenWidth >= minimumWidth ? 'side' : 'over'"
+      opened
+    >
+      <app-left-menu></app-left-menu>
+    </mat-sidenav>
+
+    <!-- CONTENT -->
+    <mat-sidenav-content [@onMainContentChange]="check()">
+      <div class="main_content">
+        <div style="padding: 20px">
+
+          <!-- PAGES -->
+          <router-outlet></router-outlet>
+
         </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  
-  </div>
+      </div>
+    </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+</div>

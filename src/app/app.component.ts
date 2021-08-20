@@ -4,7 +4,10 @@ import { onMainContentChange } from './animations/animations';
 import { HostListener } from "@angular/core";
 import { ThemeService } from './services/theme.service';
 
-
+/*
+This component is the root component of the application.
+The animation specified in the Component decorator are the animation used when the sidebar changes status.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +16,8 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
   title = 'Angular';
-  screenWidth!: number;
+  minimumWidth = 769; //If the width of the screen is less than this, it changes the sidebar behaviour.
+  screenWidth!: number; //Used to know the size of the screen. When it's small the sidebar go over the content.
   public onSideNavChange?: boolean;
   isDarkMode: boolean;
 
@@ -23,18 +27,18 @@ export class AppComponent {
 
       this.onSideNavChange = false;
 
-    // Stato sidenav
+    // Sidenav state
     this._sidenavService.sideNavState$.subscribe(res => {
       this.onSideNavChange = res;
       this.getScreenSize();
     })
 
-    // Larghezza schermo
+    // Screen width
     this._sidenavService.screenWidth$.subscribe(res => {
       this.screenWidth = res;
     })
 
-    // Tema
+    // Theme
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();
 
@@ -47,7 +51,7 @@ export class AppComponent {
   }
 
   check() {
-    if (this.screenWidth < 769) {
+    if (this.screenWidth < this.minimumWidth) {
       this._sidenavService.sideNavState$.next(undefined);
       return '';
     } else {

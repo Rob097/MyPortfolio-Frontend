@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { onSideNavChange, animateText } from '../../animations/animations'
-import { SidenavService } from '../../services/sidenav.service'
+import { onSideNavChange, animateText } from '../../../animations/animations'
+import { SidenavService } from '../../../services/sidenav.service'
 
 
 interface Page {
@@ -21,7 +21,7 @@ export class LeftMenuComponent implements OnInit {
   public linkText: boolean = false;
 
   public pages: Page[] = [
-    {name: 'Dashboard', link:'dashboard', icon: 'inbox'},
+    {name: 'Dashboard', link:'', icon: 'inbox'},
     {name: 'Info', link:'info', icon: 'star'},
     {name: 'User', link:'user', icon: 'send'},
   ]
@@ -33,7 +33,7 @@ export class LeftMenuComponent implements OnInit {
 
   onSinenavToggle() {
     this.sideNavState = !this.sideNavState
-    
+
     setTimeout(() => {
       this.linkText = this.sideNavState;
     }, 200)

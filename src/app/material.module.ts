@@ -42,6 +42,9 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
+/* Module used to load all the material library components
+   This modulo is used in app.module.ts
+*/
 
 @NgModule({
   imports: [
@@ -126,8 +129,3 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
   ]
 })
 export class MaterialModule {}
-
-
-/**  Copyright 2019 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
