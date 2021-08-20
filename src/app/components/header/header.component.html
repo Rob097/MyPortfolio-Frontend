@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{'Sitetitle' | translate }}</span>
+    <span style="flex: 1 1 auto"></span>
+    <mat-slide-toggle (click)="toggleDarkMode()" [(ngModel)]="isDarkMode"
+      >Dark mode</mat-slide-toggle
+    >
+    <mat-form-field appearance="fill">
+      <mat-label>Language</mat-label>
+      <mat-select
+        #selectedLang 
+        (selectionChange)="switchLang(selectedLang.value)"
+        [(value)]="selectedLanguage"
+      >
+        <mat-option 
+          *ngFor="let language of translate.getLangs()" 
+          [value]="language" 
+        >
+          {{ language }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar-row>
+</mat-toolbar>
