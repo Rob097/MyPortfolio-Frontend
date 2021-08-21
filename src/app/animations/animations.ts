@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate, animateChild, query } from '@angular/animations';
 
-
+/* Used into left-menu.content.html */
 export const onSideNavChange = trigger('onSideNavChange', [
   state('close',
     style({
@@ -16,7 +16,7 @@ export const onSideNavChange = trigger('onSideNavChange', [
   transition('open => close', animate('250ms ease-in')),
 ]);
 
-
+/* Used into app.component.html */
 export const onMainContentChange = trigger('onMainContentChange', [
   state('close',
     style({
@@ -32,7 +32,7 @@ export const onMainContentChange = trigger('onMainContentChange', [
   transition('open => close', animate('250ms ease-in')),
 ]);
 
-
+/* Used into left-menu.content.html */
 export const animateText = trigger('animateText', [
   state('hide',
     style({

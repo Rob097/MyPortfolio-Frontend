@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Dashboard",
+    "link": "",
+    "icon": "inbox"
+  },
+  {
+    "name": "Info",
+    "link": "info",
+    "icon": "star"
+  },
+  {
+    "name": "User",
+    "link": "user",
+    "icon": "send"
+  }
+]

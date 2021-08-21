@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button (click)="toggle();">
+    <button mat-icon-button (click)="toggleIsVisible();">
       <mat-icon>menu</mat-icon>
     </button>
     <span>{{'Sitetitle' | translate }}</span>
@@ -11,13 +11,13 @@
     <mat-form-field appearance="fill">
       <mat-label>Language</mat-label>
       <mat-select
-        #selectedLang 
+        #selectedLang
         (selectionChange)="switchLang(selectedLang.value)"
         [(value)]="selectedLanguage"
       >
-        <mat-option 
-          *ngFor="let language of translate.getLangs()" 
-          [value]="language" 
+        <mat-option
+          *ngFor="let language of translate.getLangs()"
+          [value]="language"
         >
           {{ language }}
         </mat-option>
