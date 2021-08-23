@@ -1,35 +1,40 @@
 <!-- Main div of the application -->
 <div class="main-container">
-
   <!-- HEADER -->
-  <app-header [sidenav]="leftSidenav"></app-header>
+  <app-header [sidenav]="leftSidenav" [comunicationNav]="rightSidenav"></app-header>
 
   <!-- SIDEBAR AND MAIN_CONTENT -->
   <mat-sidenav-container
     class="sidenav-container"
-    [hasBackdrop]="screenWidth < minimumWidth"
+    [hasBackdrop]="hasBackdrop"
   >
     <!-- SIDEBAR -->
     <mat-sidenav
       #leftSidenav
       [mode]="screenWidth >= minimumWidth ? 'side' : 'over'"
-      opened
+      [disableClose]="true"
     >
       <app-left-menu></app-left-menu>
+    </mat-sidenav>
+
+    <!-- NOTIFICATION RIGHT SIDEBAR -->
+    <mat-sidenav
+      #rightSidenav
+      mode="over"
+      position="end"
+      [disableClose]="true"
+    >
+      <h1>CIAO</h1>>
     </mat-sidenav>
 
     <!-- CONTENT -->
     <mat-sidenav-content [@onMainContentChange]="check()">
       <div class="main_content">
         <div style="padding: 20px">
-
           <!-- PAGES -->
           <router-outlet></router-outlet>
-
         </div>
       </div>
     </mat-sidenav-content>
-
-
   </mat-sidenav-container>
 </div>

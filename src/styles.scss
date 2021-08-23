@@ -40,6 +40,8 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
     color: whitesmoke;
 }
 
+
+/* Styles */
 html,
 body {
     height: 100%;
@@ -48,3 +50,8 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.mat-form-field-wrapper, .mat-form-field-flex{
+  max-height: 64px !important;
+}
+

@@ -1,4 +1,4 @@
-.header {
+/*.header {
   padding: 10px 20px;
   padding-left: 7px;
   background: rgb(212, 42, 93);
@@ -6,6 +6,19 @@
   place-content: unset !important;
 }
 
+
+
+.mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari
+  top: 0; /* Sets the sticky toolbar to be on top *
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar *
+}*/
+
 .mat-form-field{
   height: inherit;
+  max-height: 64px;
+}
+.mat-slide-toggle{
+  margin: auto 10px auto 10px;
 }

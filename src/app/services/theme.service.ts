@@ -10,11 +10,9 @@ In this case, providedIn: 'root' specifies that the service should be provided i
 export class ThemeService {
   private renderer: Renderer2; //Used to change theme
   private colorTheme!: string;
-  private cs: ConstantsService;
 
-  constructor(rendererFactory: RendererFactory2, constantsService: ConstantsService) {
+  constructor(rendererFactory: RendererFactory2, private cs: ConstantsService) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.cs = constantsService;
   }
 
   /* Here, I retrive the current set theme and add the relative class to the body DOM element. */
