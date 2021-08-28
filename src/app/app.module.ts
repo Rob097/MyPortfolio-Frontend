@@ -7,12 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HeaderComponent } from './components/Structure/header/header.component';
-import { LeftMenuComponent } from './components/Structure/left-menu/left-menu.component';
+import { HeaderComponent } from './components/structure/header/header.component';
+import { LeftMenuComponent } from './components/structure/left-menu/left-menu.component';
 import { SidenavService } from './services/sidenav.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RightMenuComponent } from './components/structure/right-menu/right-menu.component';
 
 /* Main module of the application.
 In this module are declared the main components of the application.
@@ -25,7 +26,8 @@ In here are also imported the various module used for the different functionalit
   declarations: [
     AppComponent,
     HeaderComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
+    RightMenuComponent
   ],
   imports: [
     AppRoutingModule,

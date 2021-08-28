@@ -19,8 +19,9 @@ export class AppComponent implements OnInit {
   title = 'Angular';
   minimumWidth = 769; //If the width of the screen is less than this, it changes the sidebar behaviour.
   screenWidth!: number; //Used to know the size of the screen. When it's small the sidebar go over the content.
-  public onSideNavChange: boolean;
-  public comunicationNavState: boolean;
+  onSideNavChange: boolean;
+  comunicationNavState: boolean;
+  sideNavVisible: boolean;
   isDarkMode: boolean;
   hasBackdrop!: boolean;
 
@@ -36,13 +37,19 @@ export class AppComponent implements OnInit {
     });
     this.onSideNavChange = this._sidenavService.getState();
 
+    // Sidenav visible
+    this._sidenavService.sideNavVisible$.subscribe((res) => {
+      this.sideNavVisible = res;
+    });
+    this.sideNavVisible = this._sidenavService.isVisible();
+
     // ComunicationNav state
     this._sidenavService.comunicationNavState$.subscribe((res) => {
       this.comunicationNavState = res;
     });
     this.comunicationNavState = this._sidenavService.getComunicationsNavState();
 
-    // Has Backdrop pproperty
+    // Has Backdrop property
     this._sidenavService.hasBackdrop$.subscribe(res => {
       this.hasBackdrop = res;
     });
@@ -71,7 +78,7 @@ export class AppComponent implements OnInit {
   */
   check() {
     if(window.innerWidth >= this.minimumWidth){
-      if (!this._sidenavService.isVisible()) {
+      if (!this.sideNavVisible) {
         return '';
       } else {
         if (this.onSideNavChange) {
@@ -92,6 +99,15 @@ export class AppComponent implements OnInit {
     this.isDarkMode
       ? this.themeService.update(this.cs.light)
       : this.themeService.update(this.cs.dark);
+  }
+
+  /* DisableClose for rightside sidenav */
+  disableClose(): boolean{
+    if(window.innerWidth >= this.minimumWidth){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

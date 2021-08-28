@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { ConstantsService } from './constants.service';
 
@@ -10,6 +9,7 @@ export class SidenavService {
   public screenHeight$: Subject<number> = new Subject();
   public screenWidth$: Subject<number> = new Subject();
   public sideNavState$: Subject<boolean> = new Subject();
+  public sideNavVisible$: Subject<boolean> = new Subject();
   public comunicationNavState$: Subject<boolean> = new Subject();
   public hasBackdrop$: Subject<boolean> = new Subject();
 
@@ -54,6 +54,7 @@ export class SidenavService {
   }
   /* Get state from localStorage */
   private getSidenavState(): boolean {
+
     const currentState = localStorage.getItem(
       this.cs.localStorageSidebarStateOption
     );
@@ -74,6 +75,7 @@ export class SidenavService {
   ##################################*/
   /* Save state into localStorage */
   private setSidenavVisible(visible: boolean) {
+    this.sideNavVisible$.next(visible);
     localStorage.setItem(
       this.cs.localStorageSidebarVisibleOption,
       '' + visible

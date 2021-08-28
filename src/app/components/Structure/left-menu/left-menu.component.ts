@@ -27,8 +27,15 @@ export class LeftMenuComponent implements OnInit {
   public pages: Page[] = pages;
 
   constructor(private _sidenavService: SidenavService, public cs: ConstantsService) {
+    this._sidenavService.sideNavState$.subscribe(res => {
+      this.sideNavState = res;
+      setTimeout(() => {
+        this.linkText = this.sideNavState;
+      }, 180)
+    });
     this.sideNavState = this._sidenavService.getState();
     this.linkText = this.sideNavState;
+
   }
 
   ngOnInit() {
@@ -36,12 +43,7 @@ export class LeftMenuComponent implements OnInit {
 
   /* Function used to toggle the state of the sidebar. The states are 'true' if it is open big or 'false' if it is open small.*/
   onSinenavToggle() {
-    this.sideNavState = !this.sideNavState
-
-    setTimeout(() => {
-      this.linkText = this.sideNavState;
-    }, 200)
-    this._sidenavService.setState(this.sideNavState);
+    this._sidenavService.setState(!this.sideNavState);
   }
 
 }

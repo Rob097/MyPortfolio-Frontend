@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { LanguagesService } from 'src/app/services/languages.service';
@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   isDarkMode: boolean;
   selectedLanguage!: string;
-
   isVisible: boolean;
 
   constructor(
@@ -28,6 +27,9 @@ export class HeaderComponent implements OnInit {
     private cs: ConstantsService
   ) {
     // Visible Sidebar
+    this._sidenavService.sideNavVisible$.subscribe(res => {
+      this.isVisible = res;
+    });
     this.isVisible = this._sidenavService.isVisible();
 
     // Theme
@@ -35,7 +37,10 @@ export class HeaderComponent implements OnInit {
     this.isDarkMode = themeService.isDarkMode();
 
     // Traductions
-    this.initLang();
+    this.langService.currentLang$.subscribe(res => {
+      this.selectedLanguage = res;
+    });
+    this.selectedLanguage = this.langService.initLang();
   }
 
   ngOnInit(): void {
@@ -67,13 +72,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  /* Initialization of language */
-  initLang() {
-    this.selectedLanguage = this.langService.initLang();
-  }
   /* Method used to switch from one language to another */
   switchLang(lang: string) {
-    this.selectedLanguage = lang;
     this.langService.switchLang(lang);
   }
   getLangs(): string[]{
