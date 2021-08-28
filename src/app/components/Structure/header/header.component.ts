@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ConstantsService } from 'src/app/services/constants.service';
+import { Constants } from '../../../../assets/global-constants';
 import { LanguagesService } from 'src/app/services/languages.service';
 import { SidenavService } from 'src/app/services/sidenav.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -23,8 +23,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _sidenavService: SidenavService,
     private themeService: ThemeService,
-    private langService: LanguagesService,
-    private cs: ConstantsService
+    private langService: LanguagesService
   ) {
     // Visible Sidebar
     this._sidenavService.sideNavVisible$.subscribe(res => {
@@ -66,9 +65,9 @@ export class HeaderComponent implements OnInit {
   toggleDarkMode() {
     this.isDarkMode = this.themeService.isDarkMode();
     if (this.isDarkMode) {
-      this.themeService.update(this.cs.light);
+      this.themeService.update(Constants.light);
     } else {
-      this.themeService.update(this.cs.dark);
+      this.themeService.update(Constants.dark);
     }
   }
 

@@ -3,7 +3,9 @@ import { SidenavService } from './services/sidenav.service';
 import { onMainContentChange } from './animations/animations';
 import { HostListener } from '@angular/core';
 import { ThemeService } from './services/theme.service';
-import { ConstantsService } from './services/constants.service';
+import { Constants } from '../assets/global-constants';
+import { AuthService } from './services/authentication.service';
+import { TokenStorageService } from './services/token-storage.service';
 
 /*
 This component is the root component of the application.
@@ -16,6 +18,14 @@ The animation specified in the Component decorator are the animation used when t
   animations: [onMainContentChange],
 })
 export class AppComponent implements OnInit {
+
+  // Authentication parameters
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
+
   title = 'Angular';
   minimumWidth = 769; //If the width of the screen is less than this, it changes the sidebar behaviour.
   screenWidth!: number; //Used to know the size of the screen. When it's small the sidebar go over the content.
@@ -28,8 +38,12 @@ export class AppComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private _sidenavService: SidenavService,
-    private cs: ConstantsService
+    private authenticationService: AuthService,
+    private tokenStorageService: TokenStorageService
   ) {
+
+    //Controllo se l'utente è loggato e vuole essere ricordato, altrimenti elimino i cookie
+    //this.authenticationService.firstCheckIsLogged();
 
     // Sidenav state
     this._sidenavService.sideNavState$.subscribe((res) => {
@@ -64,7 +78,24 @@ export class AppComponent implements OnInit {
     this.isDarkMode = this.themeService.isDarkMode();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
 
   @HostListener('window:resize', ['$event'])
   getScreenSize() {
@@ -82,9 +113,9 @@ export class AppComponent implements OnInit {
         return '';
       } else {
         if (this.onSideNavChange) {
-          return this.cs.open;
+          return Constants.open;
         } else {
-          return this.cs.close;
+          return Constants.close;
         }
       }
     } else {
@@ -97,8 +128,8 @@ export class AppComponent implements OnInit {
     this.isDarkMode = this.themeService.isDarkMode();
 
     this.isDarkMode
-      ? this.themeService.update(this.cs.light)
-      : this.themeService.update(this.cs.dark);
+      ? this.themeService.update(Constants.light)
+      : this.themeService.update(Constants.dark);
   }
 
   /* DisableClose for rightside sidenav */

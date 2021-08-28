@@ -14,6 +14,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RightMenuComponent } from './components/structure/right-menu/right-menu.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 /* Main module of the application.
 In this module are declared the main components of the application.
@@ -30,6 +33,7 @@ In here are also imported the various module used for the different functionalit
     RightMenuComponent
   ],
   imports: [
+    AuthenticationModule,
     AppRoutingModule,
     BrowserModule,
     FormsModule,
@@ -45,10 +49,10 @@ In here are also imported the various module used for the different functionalit
       }
     })
   ],
-  providers: [ SidenavService ],
+  providers: [ SidenavService, authInterceptorProviders ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 // AOT compilation support
 export function httpTranslateLoader(http: HttpClient) {

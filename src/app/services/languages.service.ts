@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import langs from '../../assets/i18n/langs.json';
-import { ConstantsService } from './constants.service';
+import { Constants } from '../../assets/global-constants';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +14,7 @@ export class LanguagesService {
   langs: Langs = langs;
 
   constructor(
-    public translate: TranslateService,
-    private cs: ConstantsService) {
+    public translate: TranslateService) {
   }
 
   /* Initialization of language */
@@ -25,7 +24,7 @@ export class LanguagesService {
     this.translate.addLangs(langs.langs);
     this.translate.setDefaultLang(defaultLang);
 
-    const lng = localStorage.getItem(this.cs.localStorageLang);
+    const lng = localStorage.getItem(Constants.localStorageLang);
     const currentLang = lng != null ? lng : defaultLang;
 
     this.currentLang$.next(currentLang);
@@ -36,7 +35,7 @@ export class LanguagesService {
   /* Method used to switch from one language to another */
   switchLang(lang: string) {
     this.translate.use(lang);
-    localStorage.setItem(this.cs.localStorageLang, lang);
+    localStorage.setItem(Constants.localStorageLang, lang);
     this.currentLang$.next(lang);
   }
 

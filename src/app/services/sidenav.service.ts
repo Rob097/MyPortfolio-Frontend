@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ConstantsService } from './constants.service';
+import { Constants } from '../../assets/global-constants';
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +17,7 @@ export class SidenavService {
 
   minimumWidth = 769; //If the width of the screen is less than this, it changes the sidebar behaviour.
 
-  private cs: ConstantsService;
-
-  constructor(constantsService: ConstantsService) {
-    this.cs = constantsService;
+  constructor() {
     this._comunicationNavState = false;
   }
 
@@ -50,13 +47,13 @@ export class SidenavService {
   /* Save state into localStorage */
   private setSidenavState(state: boolean) {
     this.sideNavState$.next(state);
-    localStorage.setItem(this.cs.localStorageSidebarStateOption, '' + state);
+    localStorage.setItem(Constants.localStorageSidebarStateOption, '' + state);
   }
   /* Get state from localStorage */
   private getSidenavState(): boolean {
 
     const currentState = localStorage.getItem(
-      this.cs.localStorageSidebarStateOption
+      Constants.localStorageSidebarStateOption
     );
     let booleanValue: boolean;
 
@@ -77,7 +74,7 @@ export class SidenavService {
   private setSidenavVisible(visible: boolean) {
     this.sideNavVisible$.next(visible);
     localStorage.setItem(
-      this.cs.localStorageSidebarVisibleOption,
+      Constants.localStorageSidebarVisibleOption,
       '' + visible
     );
     this.hasBackdrop();
@@ -85,7 +82,7 @@ export class SidenavService {
   /* Get state from localStorage */
   private getSidenavVisible(): boolean {
     const currentVisible = localStorage.getItem(
-      this.cs.localStorageSidebarVisibleOption
+      Constants.localStorageSidebarVisibleOption
     );
     let booleanValue: boolean;
 

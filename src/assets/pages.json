@@ -13,5 +13,10 @@
     "name": "User",
     "link": "user",
     "icon": "send"
+  },
+  {
+    "name": "Login",
+    "link": "login",
+    "icon": "user"
   }
 ]
