@@ -1,35 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Constants } from '../../assets/global-constants';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subject } from 'rxjs';
 
+/* ######## CONSTANTS ######## */
 const TOKEN_KEY = Constants.TOKEN_KEY;
 const USER_KEY = Constants.USER_KEY;
 const jwt = new JwtHelperService();
+/* ######## END OF CONSTANTS ######## */
 
+
+/* Service used to manage the JWT token used for authentication and get some information from it*/
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
-  constructor() { }
 
-  signOut(): void {
-    window.sessionStorage.clear();
+  public token$: Subject<string> = new Subject();
+
+  constructor() {
+    this.getTokenFromCookie();
   }
 
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
-  }
-
-  public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
-  }
-
-  //Funcione per ottenere il token JWT dal relativo cookie
-  getTokenFromCookie = () => {
+  //Funzione per ottenere il token JWT dal relativo cookie
+  getTokenFromCookie(){
     try {
       let cookies = document.cookie.split(';'); //contains all the cookies
-      let cookieName = []; // to contain name of all the cookies
+      let cookieName = []; // contains names of all the cookies
       let index = -1;
       let token;
 
@@ -40,6 +37,7 @@ export class TokenStorageService {
 
       if (index > -1) {
         token = cookies[index].split(/=(.+)/)[1];
+        this.token$.next(token);
         return token;
       }
     } catch (e) {
@@ -49,10 +47,15 @@ export class TokenStorageService {
     return undefined;
   };
 
+  //Funzione per ottenere il token JWT decodificato
+  getDecodedToken(){
+    return jwt.decodeToken(this.getTokenFromCookie());
+  }
+
   //Funzione per ottenere l'username dell'utente loggato
-  getUserInfo = () => {
+  getUserName = () => {
     try {
-      let token = jwt.decodeToken(this.getTokenFromCookie());
+      let token = this.getDecodedToken();
       if (token !== null && token !== undefined) return token.sub;
     } catch (e) {
       console.log(e);
@@ -60,7 +63,18 @@ export class TokenStorageService {
     return null;
   };
 
-  public saveUser(user: any): void {
+  //Funzione per ottenere l'id dell'utente loggato
+  public getUserId(): string {
+    try {
+      let token = this.getDecodedToken();
+      if (token !== null && token !== undefined) return token.userId;
+    } catch (e) {
+      console.log(e);
+    }
+    return "";
+  }
+
+  /*public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
@@ -72,15 +86,7 @@ export class TokenStorageService {
     }
 
     return {};
-  }
+  }*/
 
-  public getUserId(): string {
-    try {
-      let token = jwt.decodeToken(this.getTokenFromCookie());
-      if (token !== null && token !== undefined) return token.userId;
-    } catch (e) {
-      console.log(e);
-    }
-    return "";
-  }
+
 }

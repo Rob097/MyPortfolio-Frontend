@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import langs from '../../assets/i18n/langs.json';
 import { Constants } from '../../assets/global-constants';
 
+/* Service used to manage the internationalization part of the application */
 @Injectable({
   providedIn: 'root',
 })

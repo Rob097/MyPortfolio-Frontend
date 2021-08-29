@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Constants } from '../../assets/global-constants';
 
+/* Service used to manage the open and closed states of left sidebar, the visible and invisible states of left and right sidebars */
 @Injectable({
   providedIn: 'root',
 })

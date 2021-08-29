@@ -1,0 +1,27 @@
+<ng-container *ngIf="user!=null; else notLogged">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{user.name}}</mat-card-title>
+    <mat-card-subtitle>{{user.surname}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      Ciao {{user.name}}, ora sei loggato con i privilegi di {{user.rolesId}}.
+      La tua email è {{user.email}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+
+</ng-container>
+
+<ng-template #notLogged>
+  <h2>Non sei loggato.</h2>
+  <a routerLink="/login">Vai al login prima</a>
+</ng-template>

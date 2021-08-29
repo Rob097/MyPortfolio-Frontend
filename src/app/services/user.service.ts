@@ -4,8 +4,12 @@ import { Observable, Subject } from 'rxjs';
 import { Constants } from '../../assets/global-constants';
 import { User } from '../class/user.component';
 
-const API_URL = Constants.DOMAIN;
+/* ######## CONSTANTS ######## */
+const API_URL = Constants.DOMAIN + '/api/auth';
+/* ######## END OF CONSTANTS ######## */
 
+
+/* Service used to manage the logged user */
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +20,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(API_URL + `/api/auth/${id}`);
+    return this.http.get<User>(API_URL + `/${id}`);
+  }
+
+  getAllUsers() {
+    return this.http.get<any>(API_URL + '/getAll');
+  }
+
+  getRole(id: string): Observable<any>{
+    return this.http.get<any>(API_URL + `/role/${id}`);
   }
 
   getPublicContent(): Observable<any> {

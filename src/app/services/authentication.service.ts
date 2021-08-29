@@ -1,25 +1,31 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Constants } from '../../assets/global-constants';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { TokenStorageService } from './token-storage.service';
 
-const jwt = new JwtHelperService();
+/* ######## CONSTANTS ######## */
 const AUTH_API = Constants.DOMAIN;
+const jwt = new JwtHelperService();
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   }),
   withCredentials: true //this is required so that Angular returns the Cookies received from the server. The server sends cookies in Set-Cookie header. Without this, Angular will ignore the Set-Cookie header
 };
+/* ######## END OF CONSTANTS ######## */
 
+
+
+
+/* Service used to manage login, logout, signup and check whether someone is logged in or not */
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 
   login(username: string, password: string, rememberMe: boolean): Observable<any> {
     return this.http.post(`${AUTH_API}/api/auth/signin`, {
@@ -35,6 +41,25 @@ export class AuthService {
       email,
       password
     }, httpOptions);
+  }
+
+  //Aggiorna il token di accesso
+  refreshToken = () => {
+    return this.http.get(`${AUTH_API}/api/auth/refresh-token`);
+  };
+
+  public isAuthenticated(): boolean {
+    // Get token from localstorage
+    let token = this.tokenStorage.getTokenFromCookie();
+    // Check if token is null or empty
+    if (token){
+      // Check whether the token is expired and return
+      // true or false
+      return !jwt.isTokenExpired(token);
+    }
+    else{
+      return false
+    }
   }
 
 }
@@ -77,71 +102,6 @@ export class AuthService {
       sessionStorage.setItem('isChecked', '' + false);
       console.log(ex);
     }
-  }
-
-  //Aggiorna il token di accesso
-  refreshToken = () => {
-    return this.http.get(`${this.server}/api/auth/refresh-token`);
-  };
-
-  //Con l'autenticazione JWT i parametri non vengono passati con un header ma attraverso il body
-  signIn(username: string, password: string, rememberMe: boolean) {
-    return this.http.post<any>(`${this.server}/api/auth/signin`, {
-      username,
-      password,
-      rememberMe,
-    });
-  }
-
-  signUp(utente: any) {
-    return this.http.post<any>(`${this.server}/api/auth/signup`, utente);
-  }
-
-  //Funzione per verificare se l'utente è loggato
-  isLogged = () => {
-    let user = this.getUserInfo();
-
-    if (user === null) return false;
-    else return true;
-  };
-
-  //Funzione per ottenere l'username dell'utente loggato
-  getUserInfo = () => {
-    try {
-      let token = jwt.decodeToken(this.getTokenFromCookie());
-      if (token !== null && token !== undefined) return token.sub;
-    } catch (e) {
-      console.log(e);
-    }
-    return null;
-  };
-
-  //Funcione per ottenere il token JWT dal relativo cookie
-  getTokenFromCookie = () => {
-    try {
-      let cookies = document.cookie.split(';'); //contains all the cookies
-      let cookieName = []; // to contain name of all the cookies
-      let index = -1;
-      let token;
-
-      for (let i = 0; i < cookies.length; i++) {
-        cookieName[i] = cookies[i].split('=')[0].trim();
-      }
-      index = cookieName.indexOf(Constants.TOKEN_COOKIE);
-
-      if (index > -1) {
-        token = cookies[index].split(/=(.+)/)[1];
-        return token;
-      }
-    } catch (e) {
-      console.log(e);
-    }
-
-    return null;
-  };
-
-  getAllUsers() {
-    return this.http.get<any>(`${this.server}/api/auth/getAll`);
   }
 
 */

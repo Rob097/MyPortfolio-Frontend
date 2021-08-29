@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { authInterceptorProviders } from '../helpers/auth.interceptor';
+import { authInterceptorProviders } from '../helpers/interceptors/auth.interceptor';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -15,7 +16,8 @@ import { authInterceptorProviders } from '../helpers/auth.interceptor';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [authInterceptorProviders]
 })

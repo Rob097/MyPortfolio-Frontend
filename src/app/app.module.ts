@@ -16,7 +16,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RightMenuComponent } from './components/structure/right-menu/right-menu.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 
-import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { authInterceptorProviders } from './helpers/interceptors/auth.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 /* Main module of the application.
 In this module are declared the main components of the application.
@@ -30,7 +31,8 @@ In here are also imported the various module used for the different functionalit
     AppComponent,
     HeaderComponent,
     LeftMenuComponent,
-    RightMenuComponent
+    RightMenuComponent,
+    ProfileComponent
   ],
   imports: [
     AuthenticationModule,
