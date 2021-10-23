@@ -50,7 +50,7 @@ export class AuthenticationService {
 
   public isAuthenticated(): boolean {
     // Get token from localstorage
-    let token = this.tokenStorage.getTokenFromCookie();
+    let token = this.tokenStorage.getTokenFromLocalStorage();
     // Check if token is null or empty
     if (token){
       // Check whether the token is expired and return

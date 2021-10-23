@@ -1,5 +1,5 @@
 export interface User {
-  /*id: string;
+  id: string;
   username: string;
   name: string;
   surname: string;
@@ -11,12 +11,24 @@ export interface User {
   address: Address;
   gender: String;
   nationality: String;
-  rolesId: string[];*/
+  roles: Role[];
   uid: string;
   displayName: string;
-  email: string;
   photoURL: string;
   emailVerified: boolean | string;
+}
+
+interface Role {
+  authority: string,
+  id: number,
+  name: string,
+  permissions: Permission[]
+}
+
+interface Permission {
+  description: string,
+  id: number,
+  name: string
 }
 
 interface Address {

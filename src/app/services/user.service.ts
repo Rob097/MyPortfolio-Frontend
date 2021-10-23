@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Constants } from '../../assets/global-constants';
-import { User } from '../class/user.component';
+import { User } from '../model/user';
 
 /* ######## CONSTANTS ######## */
 //const API_URL = Constants.DOMAIN + '/api/auth';
@@ -12,7 +12,6 @@ const API_URL = Constants.DOMAIN + '/user';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQUk9WQSIsInJvbGVzIjpbeyJpZCI6MiwibmFtZSI6IlJPTEVfQURNSU4iLCJwZXJtaXNzaW9ucyI6bnVsbCwiYXV0aG9yaXR5IjoiMiJ9XSwiZXhwIjoxNjM0OTMxMzQ0LCJ1c2VySWQiOiI5IiwiaWF0IjoxNjM0OTI0MTQ0fQ.-lP4Hlferq4Q1xXSdfhph_wX0bvDwGiqTCPs0zrluoyCSLT6Zpm1uqkVSD6HLzH-SXFluD0Hgle_JDkCQfnU9w'
   })
 };
 
@@ -28,7 +27,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(API_URL + `/${id}`, httpOptions);
+    return this.http.get<User>(API_URL + `/${id}` + '?view=synthetic', httpOptions);
   }
 
   getAllUsers() {

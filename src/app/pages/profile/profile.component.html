@@ -9,7 +9,7 @@
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>
-      Ciao {{user.name}}, ora sei loggato con i privilegi di {{user.rolesId}}.
+      Ciao {{user.name}}, ora sei loggato con i privilegi di {{getRolesName()}} e i tuoi permessi sono {{getPermissionsName()}}.
       La tua email è {{user.email}}
     </p>
   </mat-card-content>

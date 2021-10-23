@@ -4,10 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
 
 /* ######## CONSTANTS ######## */
-const TOKEN_KEY = Constants.TOKEN_KEY;
-const USER_KEY = Constants.USER_KEY;
 const jwt = new JwtHelperService();
-/* ######## END OF CONSTANTS ######## */
 
 
 /* Service used to manage the JWT token used for authentication and get some information from it*/
@@ -19,37 +16,26 @@ export class TokenStorageService {
   public token$: Subject<string> = new Subject();
 
   constructor() {
-    this.getTokenFromCookie();
+    //this.getTokenFromCookie();
+    this.getTokenFromLocalStorage();
   }
 
-  //Funzione per ottenere il token JWT dal relativo cookie
-  getTokenFromCookie(){
-    try {
-      let cookies = document.cookie.split(';'); //contains all the cookies
-      let cookieName = []; // contains names of all the cookies
-      let index = -1;
-      let token;
+  saveTokenIntoLocalStorage(token: string) {
+    localStorage.setItem(Constants.TOKEN_KEY, token);
+  }
 
-      for (let i = 0; i < cookies.length; i++) {
-        cookieName[i] = cookies[i].split('=')[0].trim();
-      }
-      index = cookieName.indexOf(Constants.TOKEN_COOKIE);
-
-      if (index > -1) {
-        token = cookies[index].split(/=(.+)/)[1];
-        this.token$.next(token);
-        return token;
-      }
-    } catch (e) {
-      console.log(e);
+  getTokenFromLocalStorage() {
+    const token = localStorage.getItem(Constants.TOKEN_KEY);
+    if (token) {
+      return token;
+    } else {
+      return undefined;
     }
-
-    return undefined;
-  };
+  }
 
   //Funzione per ottenere il token JWT decodificato
-  getDecodedToken(){
-    return jwt.decodeToken(this.getTokenFromCookie());
+  getDecodedToken() {
+    return jwt.decodeToken(this.getTokenFromLocalStorage());
   }
 
   //Funzione per ottenere l'username dell'utente loggato
