@@ -19,6 +19,18 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { authInterceptorProviders } from './helpers/interceptors/auth.interceptor';
 import { ProfileComponent } from './pages/profile/profile.component';
 
+/* Firebase services + enviorment module
+import { AngularFireModule} from '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';*/
+
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
+
 /* Main module of the application.
 In this module are declared the main components of the application.
 In particular, the components inside the Structure folder.
@@ -35,6 +47,9 @@ In here are also imported the various module used for the different functionalit
     ProfileComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireAuthModule,
     AuthenticationModule,
     AppRoutingModule,
     BrowserModule,
@@ -51,7 +66,7 @@ In here are also imported the various module used for the different functionalit
       }
     })
   ],
-  providers: [ SidenavService, authInterceptorProviders ],
+  providers: [ SidenavService, authInterceptorProviders, AuthService, AngularFirestore ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -23,7 +23,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthenticationService {
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 

@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Constants } from '../../assets/global-constants';
 import { User } from '../class/user.component';
 
 /* ######## CONSTANTS ######## */
-const API_URL = Constants.DOMAIN + '/api/auth';
+//const API_URL = Constants.DOMAIN + '/api/auth';
+const API_URL = Constants.DOMAIN + '/user';
 /* ######## END OF CONSTANTS ######## */
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQUk9WQSIsInJvbGVzIjpbeyJpZCI6MiwibmFtZSI6IlJPTEVfQURNSU4iLCJwZXJtaXNzaW9ucyI6bnVsbCwiYXV0aG9yaXR5IjoiMiJ9XSwiZXhwIjoxNjM0OTMxMzQ0LCJ1c2VySWQiOiI5IiwiaWF0IjoxNjM0OTI0MTQ0fQ.-lP4Hlferq4Q1xXSdfhph_wX0bvDwGiqTCPs0zrluoyCSLT6Zpm1uqkVSD6HLzH-SXFluD0Hgle_JDkCQfnU9w'
+  })
+};
 
 
 /* Service used to manage the logged user */
@@ -20,11 +28,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(API_URL + `/${id}`);
+    return this.http.get<User>(API_URL + `/${id}`, httpOptions);
   }
 
   getAllUsers() {
-    return this.http.get<any>(API_URL + '/getAll');
+    return this.http.get<any>(API_URL + '/');
   }
 
   getRole(id: string): Observable<any>{

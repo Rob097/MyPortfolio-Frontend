@@ -4,7 +4,7 @@ import { onMainContentChange } from './animations/animations';
 import { HostListener } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { Constants } from '../assets/global-constants';
-import { AuthService } from './services/authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 import { TokenStorageService } from './services/token-storage.service';
 
 /*
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private _sidenavService: SidenavService,
-    private authenticationService: AuthService,
+    private authenticationService: AuthenticationService,
     private tokenStorageService: TokenStorageService
   ) {
 

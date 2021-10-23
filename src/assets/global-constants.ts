@@ -19,8 +19,8 @@ export class Constants {
   public static localStorageLang: string = 'lang';
 
 
-  // public static DOMAIN: string = "http://192.168.1.107:8080";
-  public static DOMAIN: string = "http://localhost:8080";
+  public static DOMAIN: string = "https://rob-portoflio-1997.herokuapp.com";
+  //public static DOMAIN: string = "http://localhost:8080";
   public static TOKEN_COOKIE: string = "token";
   public static REMEMBER_COOKIE = "rememberMe";
 

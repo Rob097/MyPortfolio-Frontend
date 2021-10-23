@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/class/user.component';
 import { UserService } from 'src/app/services/user.service';
-import { AuthService } from '../../services/authentication.service';
+
 import { TokenStorageService } from '../../services/token-storage.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
   user!: User;
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private localAuthService: AuthenticationService, private tokenStorage: TokenStorageService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getTokenFromCookie()) {
@@ -36,9 +38,10 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     const { username, password, rememberMe } = this.form.value;
 
-    this.authService.login(username, password, rememberMe).subscribe(
+    this.localAuthService.login(username, password,false).subscribe(
       data => {
-        const userId: string = this.tokenStorage.getUserId();
+        console.log("DATA: " + data);
+        /*const userId: string = this.tokenStorage.getUserId();
         this.userService.getUser(userId).subscribe(res => {
           this.userService.loggedUser$.next(res);
           this.user = res;
@@ -47,7 +50,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
 
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile']);*/
 
       },
       err => {

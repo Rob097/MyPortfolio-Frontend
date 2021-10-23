@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { AuthService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 /* Service used to guard some path to those whose permissions are not enough to access the page or that are not authenticated.*/
@@ -9,7 +9,7 @@ import { AuthService } from '../../services/authentication.service';
 })
 export class AuthGuardService implements CanActivate {
 
-constructor(public auth: AuthService, public router: Router) {}
+constructor(public auth: AuthenticationService, public router: Router) {}
 
   canActivate(  ): boolean {
     if (!this.auth.isAuthenticated()) {
