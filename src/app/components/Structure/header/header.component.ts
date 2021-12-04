@@ -16,18 +16,17 @@ export class HeaderComponent implements OnInit {
   sidenav!: MatSidenav;
   @Input()
   comunicationNav!: MatSidenav;
+  @Input()
+  attr_color!: string;
 
-  //isDarkMode: boolean;
+
   selectedLanguage!: string;
   isVisible: boolean;
-  isDark = false;
-  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
   constructor(
     private _sidenavService: SidenavService,
     private _themeService: ThemeService,
-    private langService: LanguagesService,
-    private overlayContainer: OverlayContainer
+    private langService: LanguagesService
   ) {
     // Visible Sidebar
     this._sidenavService.sideNavVisible$.subscribe(res => {
@@ -35,18 +34,12 @@ export class HeaderComponent implements OnInit {
     });
     this.isVisible = this._sidenavService.isVisible();
 
-    // Theme
-    this._themeService.isDark$.subscribe(res => {
-      this.isDark = res;
-    });
-    /*themeService.initTheme();
-    this.isDarkMode = themeService.isDarkMode();*/
-
     // Traductions
     this.langService.currentLang$.subscribe(res => {
       this.selectedLanguage = res;
     });
     this.selectedLanguage = this.langService.initLang();
+
   }
 
   ngOnInit(): void {
@@ -67,16 +60,6 @@ export class HeaderComponent implements OnInit {
       this._sidenavService.setVisible(true);
     }
   }
-
-  /* Toggle of theme
-  toggleDarkMode() {
-    this.isDarkMode = this.themeService.isDarkMode();
-    if (this.isDarkMode) {
-      this.themeService.update(Constants.light);
-    } else {
-      this.themeService.update(Constants.dark);
-    }
-  }*/
 
   /* Method used to switch from one language to another */
   switchLang(lang: string) {

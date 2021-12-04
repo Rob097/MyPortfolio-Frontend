@@ -19,67 +19,33 @@ export class ThemeService {
     private overlayContainer: OverlayContainer
   ) {}
 
+  /* Here, I get the current theme and add the relative class to the body DOM element.*/
+  initTheme() {
+    const currentTheme = this.getColorTheme();
+    if(currentTheme && currentTheme === Constants.dark){
+      this.overlayContainer.getContainerElement().classList.add('dark-theme');
+      this.isDark = true;
+    } else {
+      this.overlayContainer.getContainerElement().classList.remove('dark-theme');
+      this.isDark = false;
+    }
+    this.isDark$.next(this.isDark);
+  }
+
+  /* Get theme from localStorage*/
+  private getColorTheme() {
+    return localStorage.getItem(Constants.localStorageThemeOption);
+  }
+
   toggleTheme(): void {
     this.isDark = !this.isDark;
     this.isDark$.next(this.isDark);
     if (this.isDark) {
       this.overlayContainer.getContainerElement().classList.add('dark-theme');
+      localStorage.setItem(Constants.localStorageThemeOption, Constants.dark);
     } else {
-      this.overlayContainer
-        .getContainerElement()
-        .classList.remove('dark-theme');
+      this.overlayContainer.getContainerElement().classList.remove('dark-theme');
+      localStorage.setItem(Constants.localStorageThemeOption, Constants.light);
     }
   }
-
-
-
-
-
-
-  /*
-  private renderer: Renderer2; //Used to change theme
-  private colorTheme!: string;
-
-  constructor(rendererFactory: RendererFactory2) {
-    this.renderer = rendererFactory.createRenderer(null, null);
-  }
-
-  /* Here, I get the current theme and add the relative class to the body DOM element.
-  initTheme() {
-    this.getColorTheme();
-    this.renderer.addClass(document.body, this.colorTheme);
-  }
-
-  /* Update the theme
-  update(theme: string) {
-    this.setColorTheme(theme);
-    const previousColorTheme =
-      theme === Constants.dark ? Constants.light : Constants.dark;
-    this.renderer.removeClass(document.body, previousColorTheme);
-    this.renderer.addClass(document.body, theme);
-
-    const body = document.getElementsByTagName("mat-sidenav-content");
-    if(body && body[0]){
-      body[0].classList.remove(previousColorTheme);
-      body[0].classList.add(theme);
-    }
-  }
-
-  isDarkMode() {
-    return this.colorTheme === Constants.dark;
-  }
-
-  /* Save theme into localStorage
-  private setColorTheme(theme: string) {
-    this.colorTheme = theme;
-    localStorage.setItem(Constants.localStorageThemeOption, theme);
-  }
-
-  /* Get theme from localStorage
-  private getColorTheme() {
-    const currentTheme = localStorage.getItem(Constants.localStorageThemeOption);
-
-    this.colorTheme = currentTheme!=null ? currentTheme : Constants.light;
-
-  }*/
 }

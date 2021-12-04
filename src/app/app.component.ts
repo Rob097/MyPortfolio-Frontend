@@ -86,21 +86,10 @@ export class AppComponent implements OnInit {
     this._themeService.isDark$.subscribe(res => {
       this.isDark = res;
     });
-    /*this.themeService.initTheme();
-    this.isDarkMode = this.themeService.isDarkMode();*/
+    this._themeService.initTheme();
   }
 
   ngOnInit() {
-    /*const body = document.getElementsByTagName("mat-sidenav-content");
-    if(body && body[0]){
-      if(this.isDarkMode){
-        body[0].classList.remove(Constants.light);
-        body[0].classList.add(Constants.dark);
-      } else {
-        body[0].classList.remove(Constants.dark);
-        body[0].classList.add(Constants.light);
-      }
-    }*/
   }
 
   @HostListener('window:resize', ['$event'])

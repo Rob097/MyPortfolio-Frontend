@@ -1,5 +1,4 @@
-<div [class.dark-theme]="isDark">
-<mat-toolbar id="mainHeader" [color]="themeColor">
+<mat-toolbar id="mainHeader" [color]="attr_color">
   <mat-toolbar-row>
     <button mat-icon-button (click)="toggleIsVisible();">
       <mat-icon>menu</mat-icon>
@@ -9,9 +8,6 @@
     <button mat-icon-button (click)="togglComunicationSidenav();">
       <mat-icon>notifications</mat-icon>
     </button>
-    <!-- <mat-slide-toggle (click)="toggleDarkMode()" [(ngModel)]="isDarkMode"
-      >Dark mode</mat-slide-toggle
-    > -->
     <button mat-icon-button (click)="toggleTheme()" matTooltip="Toggle dark theme">
       <mat-icon>
         brightness_6
@@ -34,4 +30,3 @@
     </mat-form-field>
   </mat-toolbar-row>
 </mat-toolbar>
-</div>

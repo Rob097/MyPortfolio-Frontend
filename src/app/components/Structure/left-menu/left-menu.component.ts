@@ -25,8 +25,6 @@ export class LeftMenuComponent implements OnInit {
 
   public sideNavState: boolean;
   public linkText: boolean;
-  isDark: boolean = false;
-  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
   /* Array of the current existing pages */
   public pages: Page[] = pages;
@@ -43,11 +41,6 @@ export class LeftMenuComponent implements OnInit {
     });
     this.sideNavState = this._sidenavService.getState();
     this.linkText = this.sideNavState;
-
-    // Theme
-    this._themeService.isDark$.subscribe(res => {
-      this.isDark = res;
-    });
 
   }
 
