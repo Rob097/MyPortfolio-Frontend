@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SidenavService } from './services/sidenav.service';
 import { onMainContentChange } from './animations/animations';
 import { HostListener } from '@angular/core';
@@ -6,6 +6,10 @@ import { ThemeService } from './services/theme.service';
 import { Constants } from '../assets/global-constants';
 import { AuthenticationService } from './services/authentication.service';
 import { TokenStorageService } from './services/token-storage.service';
+import { DOCUMENT } from '@angular/common';
+
+const MAX_RADIUS = 100;
+const MIN_RADIUS = 10;
 
 /*
 This component is the root component of the application.
@@ -31,14 +35,20 @@ export class AppComponent implements OnInit {
   onSideNavChange: boolean;
   comunicationNavState: boolean;
   sideNavVisible: boolean;
-  isDarkMode: boolean;
+  //isDarkMode: boolean;
   hasBackdrop!: boolean;
+  radius: number = MAX_RADIUS; //Radius od content window
+  radiusTmp: number = MAX_RADIUS; // Temporary radius value, used to calculate the real radius
+  lastScrollTop = 0;
+  isDark: boolean = false;
+  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
   constructor(
-    private themeService: ThemeService,
+    private _themeService: ThemeService,
     private _sidenavService: SidenavService,
     private authenticationService: AuthenticationService,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    @Inject(DOCUMENT) private document: HTMLDocument
   ) {
 
     //Controllo se l'utente è loggato e vuole essere ricordato, altrimenti elimino i cookie
@@ -73,11 +83,24 @@ export class AppComponent implements OnInit {
     });
 
     // Theme
-    this.themeService.initTheme();
-    this.isDarkMode = this.themeService.isDarkMode();
+    this._themeService.isDark$.subscribe(res => {
+      this.isDark = res;
+    });
+    /*this.themeService.initTheme();
+    this.isDarkMode = this.themeService.isDarkMode();*/
   }
 
   ngOnInit() {
+    /*const body = document.getElementsByTagName("mat-sidenav-content");
+    if(body && body[0]){
+      if(this.isDarkMode){
+        body[0].classList.remove(Constants.light);
+        body[0].classList.add(Constants.dark);
+      } else {
+        body[0].classList.remove(Constants.dark);
+        body[0].classList.add(Constants.light);
+      }
+    }*/
   }
 
   @HostListener('window:resize', ['$event'])
@@ -106,15 +129,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  /* Toggle dark mode and store the state in localStorage */
-  toggleDarkMode() {
-    this.isDarkMode = this.themeService.isDarkMode();
-
-    this.isDarkMode
-      ? this.themeService.update(Constants.light)
-      : this.themeService.update(Constants.dark);
-  }
-
   /* DisableClose for rightside sidenav */
   disableClose(): boolean{
     if(window.innerWidth >= this.minimumWidth){
@@ -122,6 +136,32 @@ export class AppComponent implements OnInit {
     }else{
       return false;
     }
+  }
+
+  /* On scroll, alter radius of content window*/
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    var lastScrollTop = this.lastScrollTop;
+    var actualScrollTop = window.pageYOffset || event.target.scrollTop;
+
+    if (actualScrollTop > lastScrollTop) {
+      // downscroll code
+      this.radiusTmp -= (actualScrollTop-lastScrollTop)/5;
+    } else {
+      // upscroll code
+      this.radiusTmp += (lastScrollTop-actualScrollTop)/5;
+    }
+
+    // Limits
+    if(this.radiusTmp >= MIN_RADIUS && this.radiusTmp <= MAX_RADIUS){
+      this.radius = this.radiusTmp
+    } else if(this.radiusTmp < MIN_RADIUS) {
+      this.radius = MIN_RADIUS;
+    } else if(this.radiusTmp > MAX_RADIUS) {
+      this.radius = MAX_RADIUS;
+    }
+
+    this.lastScrollTop = actualScrollTop <= 0 ? 0 : actualScrollTop; // For Mobile or negative scrolling
   }
 
 }

@@ -15,6 +15,10 @@
   z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar *
 }*/
 
+/*mat-toolbar{
+  background-color: transparent !important;
+}*/
+
 .mat-form-field{
   height: inherit;
   max-height: 64px;

@@ -3,6 +3,7 @@ import { Constants } from '../../../../assets/global-constants';
 import { onSideNavChange, animateText } from '../../../animations/animations'
 import { SidenavService } from '../../../services/sidenav.service'
 import pages from '../../../../assets/pages.json';
+import { ThemeService } from 'src/app/services/theme.service';
 
 /* Interface used to describe a page attributes
 A json exists in the assets folder that contains all the pages. */
@@ -24,11 +25,16 @@ export class LeftMenuComponent implements OnInit {
 
   public sideNavState: boolean;
   public linkText: boolean;
+  isDark: boolean = false;
+  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
   /* Array of the current existing pages */
   public pages: Page[] = pages;
 
-  constructor(private _sidenavService: SidenavService) {
+  constructor(
+    private _sidenavService: SidenavService,
+    private _themeService: ThemeService) {
+
     this._sidenavService.sideNavState$.subscribe(res => {
       this.sideNavState = res;
       setTimeout(() => {
@@ -37,6 +43,11 @@ export class LeftMenuComponent implements OnInit {
     });
     this.sideNavState = this._sidenavService.getState();
     this.linkText = this.sideNavState;
+
+    // Theme
+    this._themeService.isDark$.subscribe(res => {
+      this.isDark = res;
+    });
 
   }
 

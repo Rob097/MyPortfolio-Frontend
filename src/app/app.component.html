@@ -1,5 +1,5 @@
 <!-- Main div of the application -->
-<div class="main-container">
+<div class="main-container" [class.dark-theme]="isDark">
   <!-- HEADER -->
   <app-header [sidenav]="leftSidenav" [comunicationNav]="rightSidenav"></app-header>
 
@@ -7,12 +7,15 @@
   <mat-sidenav-container
     class="sidenav-container"
     [hasBackdrop]="hasBackdrop"
+    [attr.color]="themeColor"
   >
     <!-- SIDEBAR -->
     <mat-sidenav
       #leftSidenav
+      id="leftSidenav"
       [mode]="screenWidth >= minimumWidth ? 'side' : 'over'"
       [disableClose]="true"
+      [attr.color]="themeColor"
     >
       <app-left-menu></app-left-menu>
     </mat-sidenav>
@@ -28,7 +31,7 @@
     </mat-sidenav>
 
     <!-- CONTENT -->
-    <mat-sidenav-content [@onMainContentChange]="check()">
+    <mat-sidenav-content [ngStyle]="{'border-top-left-radius': radius +'px'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
       <div class="main_content">
         <div style="padding: 20px">
           <!-- PAGES -->

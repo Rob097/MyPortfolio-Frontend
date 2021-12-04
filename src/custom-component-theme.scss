@@ -1,0 +1,5 @@
+@import './app/components/structure/left-menu/sidenav.component.scss-theme.scss';
+
+@mixin custom-components-theme($theme) {
+  @include sidenav-component-theme($theme);
+}

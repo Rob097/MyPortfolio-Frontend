@@ -25,9 +25,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';*/
 
-import { AngularFireModule } from "@angular/fire";
+/*import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';*/
 import { environment } from '../environments/environment';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -48,9 +48,9 @@ In here are also imported the various module used for the different functionalit
     ProfileComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
+    /*AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule,*/
     AuthenticationModule,
     AppRoutingModule,
     BrowserModule,
@@ -67,7 +67,7 @@ In here are also imported the various module used for the different functionalit
       }
     })
   ],
-  providers: [ SidenavService, authInterceptorProviders, AuthenticationService, AngularFirestore ],
+  providers: [ SidenavService, authInterceptorProviders, AuthenticationService/*, AngularFirestore */],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

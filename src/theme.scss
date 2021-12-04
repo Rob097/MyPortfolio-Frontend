@@ -1,0 +1,163 @@
+@use "~@angular/material" as mat;
+@include mat.core();
+
+
+/*******************************/
+/*         LIGHT THEME          */
+/*******************************/
+$light-primary-palette: (
+  50: #efeae9,
+  100: #d6ccc8,
+  200: #bbaaa3,
+  300: #a0877e,
+  400: #8b6e63,
+  500: #775447,
+  600: #6f4d40,
+  700: #644337,
+  800: #5a3a2f,
+  900: #472920,
+  A100: #ffa58b,
+  A200: #ff7d58,
+  A400: #ff5625,
+  A700: #ff420c,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+$light-accent-palette: (
+  50: #e0edeb,
+  100: #b3d2ce,
+  200: #80b4ae,
+  300: #4d968d,
+  400: #268074,
+  500: #00695c,
+  600: #006154,
+  700: #00564a,
+  800: #004c41,
+  900: #003b30,
+  A100: #71ffde,
+  A200: #3effd2,
+  A400: #0bffc6,
+  A700: #00f1b9,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$light-primary: mat.define-palette($light-primary-palette);
+$light-accent: mat.define-palette($light-accent-palette);
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+    )
+  )
+);
+
+/*******************************/
+/*         DARK THEME          */
+/*******************************/
+$dark-primary-palette: (
+  50 : #e5e3e3,
+    100 : #bebab9,
+    200 : #928c8a,
+    300 : #665d5b,
+    400 : #463b37,
+    500 : #251814,
+    600 : #211512,
+    700 : #1b110e,
+    800 : #160e0b,
+    900 : #0d0806,
+    A100 : #ff7752,
+    A200 : #ff4f1f,
+    A400 : #eb3300,
+    A700 : #d12d00,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+  ),
+);
+$dark-accent-palette: (
+  50: #e0edeb,
+  100: #b3d2ce,
+  200: #80b4ae,
+  300: #4d968d,
+  400: #268074,
+  500: #00695c,
+  600: #006154,
+  700: #00564a,
+  800: #004c41,
+  900: #003b30,
+  A100: #71ffde,
+  A200: #3effd2,
+  A400: #0bffc6,
+  A700: #00f1b9,
+  contrast: (
+    50: #e0edeb,
+    100: #b3d2ce,
+    200: #80b4ae,
+    300: #4d968d,
+    400: #268074,
+    500: #00695c,
+    600: #006154,
+    700: #00564a,
+    800: #004c41,
+    900: #003b30,
+    A100: #71ffde,
+    A200: #3effd2,
+    A400: #0bffc6,
+    A700: #00f1b9,
+  ),
+);
+
+$dark-primary: mat.define-palette($dark-primary-palette);
+$dark-accent: mat.define-palette($dark-accent-palette);
+
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+    )
+  )
+);

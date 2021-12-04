@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Constants } from '../../../../assets/global-constants';
 import { LanguagesService } from 'src/app/services/languages.service';
 import { SidenavService } from 'src/app/services/sidenav.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -16,14 +17,17 @@ export class HeaderComponent implements OnInit {
   @Input()
   comunicationNav!: MatSidenav;
 
-  isDarkMode: boolean;
+  //isDarkMode: boolean;
   selectedLanguage!: string;
   isVisible: boolean;
+  isDark = false;
+  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
   constructor(
     private _sidenavService: SidenavService,
-    private themeService: ThemeService,
-    private langService: LanguagesService
+    private _themeService: ThemeService,
+    private langService: LanguagesService,
+    private overlayContainer: OverlayContainer
   ) {
     // Visible Sidebar
     this._sidenavService.sideNavVisible$.subscribe(res => {
@@ -32,8 +36,11 @@ export class HeaderComponent implements OnInit {
     this.isVisible = this._sidenavService.isVisible();
 
     // Theme
-    themeService.initTheme();
-    this.isDarkMode = themeService.isDarkMode();
+    this._themeService.isDark$.subscribe(res => {
+      this.isDark = res;
+    });
+    /*themeService.initTheme();
+    this.isDarkMode = themeService.isDarkMode();*/
 
     // Traductions
     this.langService.currentLang$.subscribe(res => {
@@ -61,7 +68,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  /* Toggle of theme */
+  /* Toggle of theme
   toggleDarkMode() {
     this.isDarkMode = this.themeService.isDarkMode();
     if (this.isDarkMode) {
@@ -69,7 +76,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.themeService.update(Constants.dark);
     }
-  }
+  }*/
 
   /* Method used to switch from one language to another */
   switchLang(lang: string) {
@@ -88,6 +95,10 @@ export class HeaderComponent implements OnInit {
       this.comunicationNav.open();
     }
     this._sidenavService.setComunicationsNavState(this.comunicationNav.opened);
+  }
+
+  toggleTheme(): void {
+    this._themeService.toggleTheme();
   }
 
 }
