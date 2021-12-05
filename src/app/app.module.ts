@@ -17,7 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthenticationModule } from './authentication/authentication.module';
 
 import { authInterceptorProviders } from './helpers/interceptors/auth.interceptor';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 /* Firebase services + enviorment module
 import { AngularFireModule} from '@angular/fire/compat'

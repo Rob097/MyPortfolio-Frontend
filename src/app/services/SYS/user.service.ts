@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Constants } from '../../assets/global-constants';
-import { User } from '../model/user';
+import { Constants } from '../../../assets/global-constants';
+import { User } from '../../model/user';
 
 /* ######## CONSTANTS ######## */
 //const API_URL = Constants.DOMAIN + '/api/auth';
