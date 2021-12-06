@@ -1,7 +1,6 @@
-:host {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0px;
+mat-card {
+  background-color: transparent;
+  box-shadow: none !important;
 }
 
 .mat-form-field {
@@ -9,15 +8,12 @@
   min-width: 300px;
 }
 
-mat-card-title,
-mat-card-content {
-  display: flex;
-  justify-content: center;
-}
+
 
 .error {
   padding: 16px;
-  width: 300px;
+  width: 60%;
+  margin: auto;
   color: white;
   background-color: red;
 }
@@ -25,4 +21,46 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: flex-end;
+}
+
+.custom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  
+  height: 100%;
+}
+
+.custom-element {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  width: 35rem;
+  height: 35rem;
+  max-height: 75%;
+  padding: 35px;
+}
+
+.custom-button{
+  display: block;
+  border: 1px solid currentColor;
+  border-radius: 50px;
+  margin: 50px 0;
+  min-width: fit-content;
+  min-width: -moz-fit-content;
+  width: 50%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition-duration: 0.5s;
+  background-color: yellow;
+  color: #333;
+}
+.custom-button:hover {
+  color: yellow;
+  border-color: white;
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }

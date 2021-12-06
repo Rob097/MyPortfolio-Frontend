@@ -38,12 +38,40 @@ body {
     -moz-osx-font-smoothing: grayscale !important;
 }
 
-button:hover {
+/*button:hover {
   color: #7795f8;
   transform: translateY(-1px);
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-}
+}*/
 
 .mat-form-field-wrapper, .mat-form-field-flex{
   max-height: 64px !important;
+}
+
+.mat-drawer-content{
+  height: -webkit-fill-available !important;
+}
+
+.mat-card-header-text{
+  margin: auto auto !important;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+/* UTILS */
+.fl-r{
+  float: right!important;
+}
+.fl-l{
+  float: left!important;
+}
+
+
+/* FONTS */
+@font-face {
+  font-family: "Versatile";
+  src: local("Versatile"), url(./assets/fonts/Versatile-Bold.ttf) format("truetype");
 }
