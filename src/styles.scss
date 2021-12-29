@@ -18,6 +18,7 @@
 IDEE
 Creare il FE.
 Fare il login e logon bellini
+"" Esplora i tuoi talenti - Explore your skills ""
 Pagina mio profilo:
 Creare una tab con angoli smussati e ombra con scritto "Aggiungi step"
 Ogni step rappresenta un punto cardine del proprio profilo per esempio la mia storia
@@ -38,10 +39,36 @@ body {
     -moz-osx-font-smoothing: grayscale !important;
 }
 
-button:hover {
-  color: #7795f8;
+button.main-button{
+  display: block;
+  margin: 10px auto 10px auto !important;
+  background-color: transparent !important;
+  color: #f9a826 !important;
+  height: 50px;
+  transition-duration: 0.75s;
+}
+button.main-button:hover {
+  color: #ffffff !important;
+  background-color: #f9a826 !important;
   transform: translateY(-1px);
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+.main-button
+.mat-button-wrapper,
+.main-button
+.mat-button-ripple,
+.main-button
+.mat-button-focus-overlay{
+  height: inherit !important;
+}
+
+a{
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+a:hover{
+  color: #f9a826 !important;
 }
 
 .mat-form-field-wrapper, .mat-form-field-flex{

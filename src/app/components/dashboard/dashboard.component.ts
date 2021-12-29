@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/model/user';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,21 +10,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DashboardComponent implements OnInit {
 
-  users?: newUser[];
-  user?: newUser;
+  user?: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private tokenStorage: TokenStorageService) {
   }
 
   ngOnInit(): void {
+    this.userService.loggedUser$.subscribe(res => {
+      this.user = res;
+    });
+    this.userService.getUser(this.tokenStorage.getUserId()).subscribe(res => {
+      this.user = res;
+    });
   }
 
-}
-
-export interface newUser{
-  id: string,
-  username: string,
-  name: string,
-  surname: string,
-  email: string
 }
