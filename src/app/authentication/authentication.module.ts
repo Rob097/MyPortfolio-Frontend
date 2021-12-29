@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from '../helpers/interceptors/auth.interceptor';
 import { MaterialModule } from '../material.module';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { httpTranslateLoader } from '../app.module';
 
 
 
@@ -31,8 +31,3 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
   providers: [authInterceptorProviders]
 })
 export class AuthenticationModule { }
-
-// AOT compilation support
-export function httpTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}

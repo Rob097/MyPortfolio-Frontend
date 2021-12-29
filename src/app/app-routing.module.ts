@@ -5,7 +5,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InfoComponent } from './components/info/info.component';
 import { UserComponent } from './components/user/user.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuardService } from "./helpers/guards/auth-guard.service";
 import { NotAuthGuardService } from "./helpers/guards/not-auth-guard.service";
 

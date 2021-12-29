@@ -32,12 +32,10 @@
 
     <!-- CONTENT -->
     <mat-sidenav-content [ngStyle]="{'border-top-left-radius': radius +'px'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
-      <div class="main_content">
-        <div style="padding: 20px">
+
           <!-- PAGES -->
           <router-outlet></router-outlet>
-        </div>
-      </div>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

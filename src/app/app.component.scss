@@ -1,12 +1,5 @@
 .main-container, mat-sidenav-container {
   height: calc(100vh - 64px);
-  /*background-color: #a8612d !important;*/
-}
-
-@media (min-width: 769px) {
-  mat-sidenav#leftSidenav{
-    /*background-color: transparent !important;*/
-  }
 }
 
 mat-sidenav#leftSidenav{
@@ -14,6 +7,5 @@ mat-sidenav#leftSidenav{
 }
 
 mat-sidenav-content{
-  padding-top: 25px;
-  padding-left: 25px;
+  padding: 25px;
 }

@@ -68,9 +68,37 @@ a{
   text-decoration: none;
 }
 a:hover{
-  color: #f9a826 !important;
+  //color: #f9a826 !important;
 }
 
 .mat-form-field-wrapper, .mat-form-field-flex{
   max-height: 64px !important;
+}
+
+.mat-drawer-content{
+  height: -webkit-fill-available !important;
+}
+
+.mat-card-header-text{
+  margin: auto auto !important;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+/* UTILS */
+.fl-r{
+  float: right!important;
+}
+.fl-l{
+  float: left!important;
+}
+
+
+/* FONTS */
+@font-face {
+  font-family: "Versatile";
+  src: local("Versatile"), url(./assets/fonts/Versatile-Bold.ttf) format("truetype");
 }
