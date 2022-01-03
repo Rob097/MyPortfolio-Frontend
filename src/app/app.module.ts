@@ -7,16 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HeaderComponent } from './components/Structure/header/header.component';
-import { LeftMenuComponent } from './components/Structure/left-menu/left-menu.component';
-import { RightMenuComponent } from './components/Structure/right-menu/right-menu.component';
+import { HeaderComponent } from './components/structure/header/header.component';
+import { LeftMenuComponent } from './components/structure/left-menu/left-menu.component';
+import { RightMenuComponent } from './components/structure/right-menu/right-menu.component';
 import { SidenavService } from './services/sidenav.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthenticationModule } from './authentication/authentication.module';
-
-import { authInterceptorProviders } from './helpers/interceptors/auth.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
 
 /* Firebase services + enviorment module
@@ -27,9 +25,11 @@ import { environment } from '../environments/environment';*/
 
 /*import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFirestore } from '@angular/fire/firestore';*/
-import { environment } from '../environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';*/
 import { AuthenticationService } from './services/authentication.service';
+import { interceptorProviders } from './helpers/interceptors/interceptors';
+import { ToastrModule } from 'ngx-toastr';
 
 
 /* Main module of the application.
@@ -59,6 +59,7 @@ In here are also imported the various module used for the different functionalit
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -67,7 +68,7 @@ In here are also imported the various module used for the different functionalit
       }
     })
   ],
-  providers: [ SidenavService, authInterceptorProviders, AuthenticationService/*, AngularFirestore */],
+  providers: [ interceptorProviders, SidenavService, AuthenticationService/*, AngularFirestore */],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

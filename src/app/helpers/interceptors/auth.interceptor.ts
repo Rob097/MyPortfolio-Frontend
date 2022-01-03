@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpEvent } from '@angular/common/http';
+import { HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 
@@ -19,11 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token != null) {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
     }
-    
+
     return next.handle(authReq);
   }
 }
-
-export const authInterceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-];

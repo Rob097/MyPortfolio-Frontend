@@ -7,6 +7,7 @@ import { Constants } from '../assets/global-constants';
 import { AuthenticationService } from './services/authentication.service';
 import { TokenStorageService } from './services/token-storage.service';
 import { DOCUMENT } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 const MAX_RADIUS = 100;
 const MIN_RADIUS = 10;
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit {
     private _sidenavService: SidenavService,
     private authenticationService: AuthenticationService,
     private tokenStorageService: TokenStorageService,
+    private toastr: ToastrService,
     @Inject(DOCUMENT) private document: HTMLDocument
   ) {
 

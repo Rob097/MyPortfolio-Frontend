@@ -8,6 +8,7 @@ import { UserComponent } from './components/user/user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuardService } from "./helpers/guards/auth-guard.service";
 import { NotAuthGuardService } from "./helpers/guards/not-auth-guard.service";
+import { SignupComponent } from './authentication/signup/signup.component';
 
 /* This is the modulo used for the routes. It is bind to app.module.ts */
 const routes: Routes = [
@@ -27,6 +28,11 @@ const routes: Routes = [
       path: 'login',
       component: LoginComponent,
       canActivate: [NotAuthGuardService]
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    canActivate: [NotAuthGuardService]
   },
   {
     path: 'profile',

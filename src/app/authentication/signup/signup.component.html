@@ -1,0 +1,94 @@
+<div class="custom-container">
+  <mat-card>
+  <div class="inner-card" id="login-form-card">
+    <!-- <mat-card-header> -->
+    <!--<mat-icon mat-card-avatar>face</mat-icon>-->
+    <!-- <mat-title>{{'Login-header' | translate }}</mat-title> -->
+    <!-- <mat-card-subtitle>subtitle</mat-card-subtitle> -->
+    <!-- </mat-card-header> -->
+    <h1>{{ "Signup-header" | translate }}</h1>
+    <mat-card-content style="margin-top: 50px">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <p>
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Es. mRossi97"
+              formControlName="username"
+            />
+            <mat-hint>Username valido, grande!</mat-hint>
+            <mat-error *ngIf="username.hasError('minlength') && !username.hasError('required')">
+              Inserisci un username valido
+            </mat-error>
+            <mat-error *ngIf="username.hasError('required')">
+              L'Username è <strong>obbligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Es. mario.rossi@gmail.com"
+              formControlName="email"
+            />
+            <mat-hint>Email valida, grande!</mat-hint>
+            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              Inserisci un'email valida
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              L'Email è <strong>obbligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="Password"
+              formControlName="password"
+            />
+            <mat-hint>Password valida, grande!</mat-hint>
+            <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+              Il numero minimo di caratteria è {{ minPasswordLength }}
+            </mat-error>
+            <mat-error *ngIf="password.hasError('required')">
+              La password è <strong>obbligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <p *ngIf="isLoginFailed" class="error">
+          {{ errorMessage }}
+        </p>
+
+        <button type="submit" mat-button class="main-button">
+          Registrati
+          <mat-icon>login</mat-icon>
+        </button>
+
+        <p style="text-align: center; margin-top: 25px;">Already a Memeber? <a routerLink="/login">Vai al Login.</a></p>
+
+      </form>
+    </mat-card-content>
+  </div>
+
+  <div class="inner-card" id="login-sidecontent-card" style="display: flex">
+    <div style="display: block; margin: auto">
+      <img
+        src="../../../assets/images/general-illustrations/explore-illustration.svg"
+        alt="Explore"
+        style="height: 40vh; max-width: 60vw"
+      />
+    </div>
+  </div>
+</mat-card>
+</div>

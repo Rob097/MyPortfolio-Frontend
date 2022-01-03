@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenStorageService } from './token-storage.service';
 
 /* ######## CONSTANTS ######## */
-const AUTH_API = Constants.DOMAIN;
+const AUTH_API = Constants.DOMAIN + "/api/auth";
 const jwt = new JwtHelperService();
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,15 +28,15 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 
   login(username: string, password: string, rememberMe: boolean): Observable<any> {
-    return this.http.post(`${AUTH_API}/api/auth/signin`, {
+    return this.http.post(`${AUTH_API}/signin`, {
       username,
       password,
       rememberMe
     }, httpOptions);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
+  signup(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(`${AUTH_API}/signup`, {
       username,
       email,
       password
