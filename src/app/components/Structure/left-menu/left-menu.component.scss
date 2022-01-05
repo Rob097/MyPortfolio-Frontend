@@ -1,11 +1,5 @@
+@import "/src/app/components/shared/variables";
+
 .sidenav_container {
-    min-width: 60px; 
-    height: calc(100vh - 200px);
-  }
-  
-  .jim {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+  height: calc(100vh - #{$sidenav-content-height-gap});
+}

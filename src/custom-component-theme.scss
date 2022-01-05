@@ -1,5 +1,16 @@
-@import './app/components/structure/left-menu/sidenav.component.scss-theme.scss';
+@import './app/components/structure/structure.theme.scss';
+
+@import "/src/app/components/profile/tabs/about/about.theme.scss";
+@import "/src/app/components/profile/tabs/photos-videos/photos-videos.theme";
+@import "/src/app/components/profile/tabs/timeline/timeline.theme";
 
 @mixin custom-components-theme($theme) {
-  @include sidenav-component-theme($theme);
+
+  // Structure
+  @include structure-theme($theme);
+
+  // Pages
+  @include profile-about-theme($theme);
+  @include profile-photos-videos-theme($theme);
+  @include profile-timeline-theme($theme);
 }

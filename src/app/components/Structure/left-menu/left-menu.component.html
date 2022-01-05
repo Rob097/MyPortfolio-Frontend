@@ -7,7 +7,7 @@
       <mat-nav-list>
         <mat-list-item *ngFor="let page of pages">
           <a mat-list-item [routerLink]="page?.link">
-            <mat-icon style="padding-right: 5px">{{ page?.icon }}</mat-icon>
+            <mat-icon style="padding-right: 5px" matTooltip="{{page?.name}}" matTooltipPosition="right">{{ page?.icon }}</mat-icon>
             <span [@animateText]="linkText ? cs.show : cs.hide">{{
               page?.name
             }}</span>

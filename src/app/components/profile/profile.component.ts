@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
     });
     this.userService.getUser(this.tokenStorage.getUserId()).subscribe(res => {
       this.user = res;
+      this.user.name = this.user.name.charAt(0) + this.user.name.substring(1).toLowerCase();
+      this.user.surname = this.user.surname.charAt(0) + this.user.surname.substring(1).toLowerCase();
     });
 
   }

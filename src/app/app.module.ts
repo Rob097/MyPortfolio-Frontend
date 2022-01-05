@@ -12,7 +12,7 @@ import { LeftMenuComponent } from './components/structure/left-menu/left-menu.co
 import { RightMenuComponent } from './components/structure/right-menu/right-menu.component';
 import { SidenavService } from './services/sidenav.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule  } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -30,7 +30,9 @@ import { environment } from '../environments/environment';*/
 import { AuthenticationService } from './services/authentication.service';
 import { interceptorProviders } from './helpers/interceptors/interceptors';
 import { ToastrModule } from 'ngx-toastr';
-
+import { ProfileModule } from './components/profile/profile.module';
+import { FakeDbService } from './fake-db/fake-db.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 /* Main module of the application.
 In this module are declared the main components of the application.
@@ -45,7 +47,6 @@ In here are also imported the various module used for the different functionalit
     HeaderComponent,
     LeftMenuComponent,
     RightMenuComponent,
-    ProfileComponent
   ],
   imports: [
     /*AngularFireModule.initializeApp(environment.firebase),
@@ -64,12 +65,20 @@ In here are also imported the various module used for the different functionalit
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
+    InMemoryWebApiModule.forRoot(FakeDbService, {
+      delay: 0,
+      passThruUnknownUrl: true,
+    }),
   ],
-  providers: [ interceptorProviders, SidenavService, AuthenticationService/*, AngularFirestore */],
-  bootstrap: [AppComponent]
+  providers: [
+    interceptorProviders,
+    SidenavService,
+    AuthenticationService /*, AngularFirestore */,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 

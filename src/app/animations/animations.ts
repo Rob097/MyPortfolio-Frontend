@@ -1,15 +1,19 @@
 import { trigger, state, style, transition, animate, animateChild, query } from '@angular/animations';
 
+/** To update these two constants you have to update the respective values in /src/app/components/shared/_variables.scss */
+const LARGE_SIDENAV_WIDTH = "280px";
+const SMALL_SIDENAV_WIDTH = "90px";
+
 /* Used into left-menu.content.html */
 export const onSideNavChange = trigger('onSideNavChange', [
   state('close',
     style({
-      'min-width': '50px'
+      'min-width': SMALL_SIDENAV_WIDTH
     })
   ),
   state('open',
     style({
-      'min-width': '200px'
+      'min-width': LARGE_SIDENAV_WIDTH
     })
   ),
   transition('close => open', animate('250ms ease-in')),
@@ -20,12 +24,12 @@ export const onSideNavChange = trigger('onSideNavChange', [
 export const onMainContentChange = trigger('onMainContentChange', [
   state('close',
     style({
-      'margin-left': '90px'
+      'margin-left': SMALL_SIDENAV_WIDTH
     })
   ),
   state('open',
     style({
-      'margin-left': '200px'
+      'margin-left': LARGE_SIDENAV_WIDTH
     })
   ),
   transition('close => open', animate('250ms ease-in')),

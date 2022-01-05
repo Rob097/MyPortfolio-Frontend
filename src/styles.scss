@@ -2,17 +2,10 @@
 @include mat-core();
 
 @import "./theme.scss";
-@import "./custom-component-theme.scss";
 @import "./typography.scss";
+@import "./fonts.scss";
 
-
-@include angular-material-theme($light-theme);
-@include custom-components-theme($light-theme);
-
-.dark-theme {
-  @include angular-material-color($dark-theme);
-  @include custom-components-theme($dark-theme);
-}
+@import './assets/styles/bootstrap.min.css';
 
 /*
 IDEE
@@ -30,6 +23,17 @@ Una volta finito un esempio di FE sviluppare il BE per rendere tutto dinamico
 */
 
 /* Styles */
+* {
+  &:active,
+  :focus {
+    outline: none !important;  // 1
+  }
+}
+
+a:not(.mat-button):not(.mat-raised-button):not(.mat-fab):not(.mat-mini-fab):not([mat-list-item]) {
+    color: #3f51b5; // 2
+  }
+
 html, body { height: 100%; }
 
 body {
@@ -67,9 +71,6 @@ a{
   color: inherit;
   text-decoration: none;
 }
-a:hover{
-  //color: #f9a826 !important;
-}
 
 .mat-form-field-wrapper, .mat-form-field-flex{
   max-height: 64px !important;
@@ -79,9 +80,7 @@ a:hover{
   height: -webkit-fill-available !important;
 }
 
-.mat-card-header-text{
-  margin: auto auto !important;
-}
+
 
 mat-card-title {
   display: flex;
@@ -94,11 +93,4 @@ mat-card-title {
 }
 .fl-l{
   float: left!important;
-}
-
-
-/* FONTS */
-@font-face {
-  font-family: "Versatile";
-  src: local("Versatile"), url(./assets/fonts/Versatile-Bold.ttf) format("truetype");
 }

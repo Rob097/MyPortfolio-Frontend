@@ -1,11 +1,12 @@
 @use "~@angular/material" as mat;
 @include mat.core();
-
+@import "~@angular/material/theming";
+@import "./custom-component-theme.scss";
 
 /*******************************/
 /*         LIGHT THEME          */
 /*******************************/
-$light-primary-palette: (
+/*$light-primary-palette: (
   50: #efeae9,
   100: #d6ccc8,
   200: #bbaaa3,
@@ -68,6 +69,70 @@ $light-accent-palette: (
     A400 : #ffffff,
     A700 : #ffffff,
   ),
+);*/
+$light-primary-palette: (
+  50: #eaeeef,
+  100: #ccd4d7,
+  200: #aab7bd,
+  300: #879aa2,
+  400: #6e848e,
+  500: #546e7a,
+  600: #4d6672,
+  700: #435b67,
+  800: #3a515d,
+  900: #293f4a,
+  A100: #95d9ff,
+  A200: #62c7ff,
+  A400: #2fb5ff,
+  A700: #15acff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+$light-accent-palette: (
+  50: #fff1ed,
+  100: #ffdcd1,
+  200: #ffc5b2,
+  300: #ffad93,
+  400: #ff9c7c,
+  500: #ff8a65,
+  600: #ff825d,
+  700: #ff7753,
+  800: #ff6d49,
+  900: #ff5a37,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffe6e1,
+  A700: #ffd0c8,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
 );
 
 $light-primary: mat.define-palette($light-primary-palette);
@@ -77,44 +142,47 @@ $light-theme: mat.define-light-theme(
   (
     color: (
       primary: $light-primary,
-      accent: $light-accent
+      accent: $light-accent,
     ),
   )
 );
+
+@include angular-material-theme($light-theme);
+@include custom-components-theme($light-theme);
 
 /*******************************/
 /*         DARK THEME          */
 /*******************************/
 $dark-primary-palette: (
-  50 : #e5e3e3,
-    100 : #bebab9,
-    200 : #928c8a,
-    300 : #665d5b,
-    400 : #424242,
-    500 : #251814,
-    600 : #211512,
-    700 : #1b110e,
-    800 : #160e0b,
-    900 : #0d0806,
-    A100 : #ff7752,
-    A200 : #ff4f1f,
-    A400 : #eb3300,
-    A700 : #d12d00,
-    contrast: (
-        50 : #ffffff,
-        100 : #e0edeb,
-        200 : #ffffff,
-        300 : #ffffff,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #ffffff,
-        A200 : #ffffff,
-        A400 : #ffffff,
-        A700 : #ffffff,
+  50: #e5e3e3,
+  100: #bebab9,
+  200: #928c8a,
+  300: #665d5b,
+  400: #424242,
+  500: #251814,
+  600: #211512,
+  700: #1b110e,
+  800: #160e0b,
+  900: #0d0806,
+  A100: #ff7752,
+  A200: #ff4f1f,
+  A400: #eb3300,
+  A700: #d12d00,
+  contrast: (
+    50: #ffffff,
+    100: #e0edeb,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #ffffff,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
   ),
 );
 $dark-accent-palette: (
@@ -158,6 +226,11 @@ $dark-theme: mat.define-dark-theme(
     color: (
       primary: $dark-primary,
       accent: $dark-accent,
-    )
+    ),
   )
 );
+
+.dark-theme {
+  @include angular-material-color($dark-theme);
+  @include custom-components-theme($dark-theme);
+}

@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+@mixin structure-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  /* Sidenav styles */
+  .mat-sidenav{
+    background-color: mat-color($accent, 300);
+    color: mat-contrast($accent, 50) !important;
+  }
+  .mat-list-item{
+    color: mat-contrast($accent, 50) !important;
+  }
+  .mat-sidenav-container{
+    background-color: mat-color($accent, 300);
+  }
+  .mat-sidenav-content{
+    background-color: mat-color($primary, 50);
+    color: mat-contrast($primary, 50) !important;
+  }
+
+  /* Header Toolbar styles */
+  .mat-toolbar.mat-primary{
+    background-color: mat-color($accent, 300);
+    color: mat-contrast($accent, 50) !important;
+  }
+
+}

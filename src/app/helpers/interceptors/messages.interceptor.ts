@@ -25,7 +25,7 @@ export class MessagesInterceptor implements HttpInterceptor {
         catchError((err: any) => {
             if(err instanceof HttpErrorResponse) {
                 try {
-                     this.alertsService.showError(err.error.message, err.error.title);
+                     this.alertsService.showError(err.error.message ? err.error.message : err.error.status + " " + err.error.error, err.error.title);
                 } catch(e) {
                      this.alertsService.showError('An error occurred', '');
                 }
