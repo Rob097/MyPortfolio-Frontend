@@ -4,6 +4,8 @@ import { onSideNavChange, animateText } from '../../../animations/animations'
 import { SidenavService } from '../../../services/sidenav.service'
 import pages from '../../../../assets/pages.json';
 import { ThemeService } from 'src/app/services/theme.service';
+import { DialogsService } from 'src/app/services/dialogs.service';
+import { UserMenuDialogComponent } from '../../shared/dialog/user-menu-dialog/user-menu-dialog.component';
 
 /* Interface used to describe a page attributes
 A json exists in the assets folder that contains all the pages. */
@@ -31,7 +33,8 @@ export class LeftMenuComponent implements OnInit {
 
   constructor(
     private _sidenavService: SidenavService,
-    private _themeService: ThemeService) {
+    private _themeService: ThemeService,
+    private _dialogService: DialogsService) {
 
     this._sidenavService.sideNavState$.subscribe(res => {
       this.sideNavState = res;
@@ -50,6 +53,17 @@ export class LeftMenuComponent implements OnInit {
   /* Function used to toggle the state of the sidebar. The states are 'true' if it is open big or 'false' if it is open small.*/
   onSinenavToggle() {
     this._sidenavService.setState(!this.sideNavState);
+  }
+
+  openDialog(event: any) {
+    const filterData = {
+      width: "150px",
+      height: "150px",
+      located: "RIGHT",
+      hasBackdrop: false
+    };
+
+    this._dialogService.open(UserMenuDialogComponent, filterData, event);
   }
 
 }

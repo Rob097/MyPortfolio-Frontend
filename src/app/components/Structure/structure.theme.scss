@@ -6,14 +6,14 @@
 
   /* Sidenav styles */
   .mat-sidenav{
-    background-color: mat-color($accent, 300);
-    color: mat-contrast($accent, 50) !important;
+    background-color: mat-color($primary, 300);
+    color: mat-contrast($primary, 50) !important;
   }
   .mat-list-item{
-    color: mat-contrast($accent, 50) !important;
+    color: mat-contrast($primary, 50) !important;
   }
   .mat-sidenav-container{
-    background-color: mat-color($accent, 300);
+    background-color: mat-color($primary, 300);
   }
   .mat-sidenav-content{
     background-color: mat-color($primary, 50);
@@ -22,8 +22,8 @@
 
   /* Header Toolbar styles */
   .mat-toolbar.mat-primary{
-    background-color: mat-color($accent, 300);
-    color: mat-contrast($accent, 50) !important;
+    background-color: mat-color($primary, 300);
+    color: mat-contrast($primary, 50) !important;
   }
 
 }

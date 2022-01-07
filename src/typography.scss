@@ -10,9 +10,10 @@ Others font-families:
 $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
 $font-family: 'Camphor, Open Sans, Segoe UI, sans-serif',
 $font-family: 'Versatile, Open Sans, Segoe UI, sans-serif',
+$font-family: 'Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji'
 */
 $my-typography: mat.define-typography-config(
-    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
+    $font-family: 'Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
     $title: mat.define-typography-level(20px, 32px, 600),
     $body-2: mat.define-typography-level(14px, 24px, 600),
     $button: mat.define-typography-level(14px, 14px, 600),

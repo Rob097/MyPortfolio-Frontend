@@ -32,9 +32,9 @@ profile-about {
         .about-sidebar {
             padding-left: 32px;
 
-            @include media-breakpoint('sm') {
+            /*@include media-breakpoint('sm') {
                 padding: 8px
-            }
+            }*/
 
             .friends {
 
@@ -92,7 +92,7 @@ profile-about {
         border-radius: 4px;
         overflow: hidden;
         margin-bottom: 16px;
-        @include mat-elevation(2);
+        //@include mat-elevation(2);
 
         header {
             padding: 16px;
