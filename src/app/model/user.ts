@@ -1,4 +1,4 @@
-export interface User {
+export class User {
   id: string;
   username: string;
   name: string;
@@ -8,7 +8,7 @@ export interface User {
   phone: string;
   avatarUrl: string;
   birthDate: Date;
-  address: Address;
+  address: Address | undefined;
   gender: String;
   nationality: String;
   roles: Role[];
@@ -16,6 +16,27 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean | string;
+
+  constructor(){
+    this.id = "";
+    this.username = "";
+    this.name = "";
+    this.surname = "";
+    this.email = "";
+    this.password = "";
+    this.phone = "";
+    this.avatarUrl = "";
+    this.birthDate = new Date();
+    this.address = undefined;
+    this.gender = "";
+    this.nationality = "";
+    this.roles = [];
+    this.uid = "";
+    this.displayName = "";
+    this.photoURL = "";
+    this.emailVerified = "";
+  }
+
 }
 
 interface Role {

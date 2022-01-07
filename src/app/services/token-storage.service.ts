@@ -33,6 +33,10 @@ export class TokenStorageService {
     }
   }
 
+  deleteTokenFromLocalStorage() {
+    localStorage.removeItem(Constants.TOKEN_KEY);
+  }
+
   //Funzione per ottenere il token JWT decodificato
   getDecodedToken() {
     return jwt.decodeToken(this.getTokenFromLocalStorage());

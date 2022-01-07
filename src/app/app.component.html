@@ -31,7 +31,7 @@
     </mat-sidenav>
 
     <!-- CONTENT -->
-    <mat-sidenav-content [ngStyle]="{'border-top-left-radius': radius +'px'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
+    <mat-sidenav-content [ngClass]="!sideNavVisible ? 'rounded-zero' : ''" [ngStyle]="{'border-top-left-radius': radius +'px'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
 
           <!-- PAGES -->
           <router-outlet></router-outlet>

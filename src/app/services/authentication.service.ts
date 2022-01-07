@@ -43,6 +43,11 @@ export class AuthenticationService {
     }, httpOptions);
   }
 
+  logout(){
+    this.tokenStorage.deleteTokenFromLocalStorage();
+    window.location.href = "/";
+  }
+
   //Aggiorna il token di accesso
   refreshToken = () => {
     return this.http.get(`${AUTH_API}/api/auth/refresh-token`);

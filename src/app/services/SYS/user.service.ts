@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Constants } from '../../../assets/global-constants';
 import { User } from '../../model/user';
 
@@ -22,9 +22,9 @@ const httpOptions = {
 })
 export class UserService {
 
-  public loggedUser$: Subject<User> = new Subject();
+  public loggedUser$: BehaviorSubject<User> = new BehaviorSubject(new User());
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUser(id: string): Observable<User> {
     return this.http.get<User>(API_URL + `/${id}` + '?view=synthetic', httpOptions);

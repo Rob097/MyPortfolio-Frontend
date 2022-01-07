@@ -13,10 +13,8 @@ export class ProfileComponent implements OnInit {
   user?: User;
 
   constructor(private userService: UserService, private tokenStorage: TokenStorageService) {
+
     this.userService.loggedUser$.subscribe(res => {
-      this.user = res;
-    });
-    this.userService.getUser(this.tokenStorage.getUserId()).subscribe(res => {
       this.user = res;
       this.user.name = this.user.name.charAt(0) + this.user.name.substring(1).toLowerCase();
       this.user.surname = this.user.surname.charAt(0) + this.user.surname.substring(1).toLowerCase();

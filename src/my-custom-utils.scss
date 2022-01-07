@@ -36,13 +36,17 @@
   margin-left: auto!important;
   margin-right: auto!important;
 }
+.my-auto {
+  margin-top: auto!important;
+  margin-bottom: auto!important;
+}
+.m-auto {
+  margin: auto!important;
+}
 .bg-card {
   --tw-bg-opacity: 1 !important;
   background-color: rgba(255,255,255, 1)!important;
   color: black;
-}
-.rounded-full {
-  border-radius: 9999px!important;
 }
 .-mt-26 {
   margin-top: -6.5rem!important;
@@ -50,11 +54,20 @@
 .rounded-full {
   border-radius: 9999px!important;
 }
+.rounded-zero {
+  border-radius: 0!important;
+}
+.w-05{
+  width: 2rem!important;
+}
 .w-24 {
   width: 6rem!important;
 }
 .w-32 {
   width: 8rem!important;
+}
+.h-05 {
+  height: 2rem!important;
 }
 .h-24 {
   height: 6rem!important;
@@ -98,6 +111,28 @@
 }
 .mt-8 {
   margin-top: 2rem!important;
+}
+
+.leading-normal {
+  line-height: 1.5!important;
+}
+.font-medium {
+  font-weight: 500!important;
+}
+.text-center {
+  text-align: center!important;
+}
+.whitespace-nowrap {
+  white-space: nowrap!important;
+}
+.text-ellipsis {
+  text-overflow: ellipsis!important;
+}
+.overflow-hidden {
+  overflow: hidden!important;
+}
+.transition-medium{
+  transition-duration: 0.75s;
 }
 
 @media (min-width: 1280px){

@@ -3,9 +3,10 @@ import { Constants } from '../../../../assets/global-constants';
 import { onSideNavChange, animateText } from '../../../animations/animations'
 import { SidenavService } from '../../../services/sidenav.service'
 import pages from '../../../../assets/pages.json';
-import { ThemeService } from 'src/app/services/theme.service';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { UserMenuDialogComponent } from '../../shared/dialog/user-menu-dialog/user-menu-dialog.component';
+import { UserService } from 'src/app/services/SYS/user.service';
+import { User } from 'src/app/model/user';
 
 /* Interface used to describe a page attributes
 A json exists in the assets folder that contains all the pages. */
@@ -31,10 +32,17 @@ export class LeftMenuComponent implements OnInit {
   /* Array of the current existing pages */
   public pages: Page[] = pages;
 
+  user?: User;
+
   constructor(
     private _sidenavService: SidenavService,
-    private _themeService: ThemeService,
-    private _dialogService: DialogsService) {
+    private _dialogService: DialogsService,
+    private _userService: UserService
+  ) {
+
+      this._userService.loggedUser$.subscribe(res => {
+        this.user = res;
+      });
 
     this._sidenavService.sideNavState$.subscribe(res => {
       this.sideNavState = res;
@@ -57,8 +65,8 @@ export class LeftMenuComponent implements OnInit {
 
   openDialog(event: any) {
     const filterData = {
-      width: "150px",
-      height: "150px",
+      width: "fit-content",
+      height: "fit-content",
       located: "RIGHT",
       hasBackdrop: false
     };

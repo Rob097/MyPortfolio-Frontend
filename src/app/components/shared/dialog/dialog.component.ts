@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ComponentFactoryResolver,
   ComponentRef,
@@ -22,6 +23,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   componentRef!: ComponentRef<any>;
 
   constructor(
+    private _changeDetectionRef : ChangeDetectorRef,
     private resolver: ComponentFactoryResolver,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -31,6 +33,9 @@ export class DialogComponent implements OnInit, OnDestroy {
   ngAfterViewInit(): void {
     const factory = this.resolver.resolveComponentFactory(this.data.component);
     this.componentRef = this.viewContainerRef.createComponent(factory);
+
+    // Used to solve ExpressionChangedAfterItHasBeenCheckedError
+    this._changeDetectionRef.detectChanges();
   }
 
   ngOnDestroy() {

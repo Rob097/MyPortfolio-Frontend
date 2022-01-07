@@ -20,9 +20,6 @@ export class DashboardComponent implements OnInit {
     this.userService.loggedUser$.subscribe(res => {
       this.user = res;
     });
-    this.userService.getUser(this.tokenStorage.getUserId()).subscribe(res => {
-      this.user = res;
-    });
   }
 
 }

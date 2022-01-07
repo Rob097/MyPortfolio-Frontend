@@ -31,7 +31,7 @@ export class DialogsService {
     }
 
     this.config['data'] = { component };
-    return this.dialog.open(DialogComponent, this.config);
+    return this.dialog.open(DialogComponent, {...this.config, panelClass: 'custom-dialog'});
   }
 
   /*public error<T>(data: any) {

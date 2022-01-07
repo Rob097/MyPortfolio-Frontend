@@ -1,13 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidenavService } from './services/sidenav.service';
 import { onMainContentChange } from './animations/animations';
 import { HostListener } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { Constants } from '../assets/global-constants';
-import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/SYS/user.service';
 import { TokenStorageService } from './services/token-storage.service';
-import { DOCUMENT } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { User } from './model/user';
 
 const MAX_RADIUS = 100;
 const MIN_RADIUS = 10;
@@ -24,8 +24,6 @@ The animation specified in the Component decorator are the animation used when t
 })
 export class AppComponent implements OnInit {
 
-  // Authentication parameters
-  private roles: string[] = [];
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
@@ -36,7 +34,6 @@ export class AppComponent implements OnInit {
   onSideNavChange: boolean;
   comunicationNavState: boolean;
   sideNavVisible: boolean;
-  //isDarkMode: boolean;
   hasBackdrop!: boolean;
   radius: number = MAX_RADIUS; //Radius od content window
   radiusTmp: number = MAX_RADIUS; // Temporary radius value, used to calculate the real radius
@@ -47,15 +44,17 @@ export class AppComponent implements OnInit {
   constructor(
     private _themeService: ThemeService,
     private _sidenavService: SidenavService,
-    private authenticationService: AuthenticationService,
-    private tokenStorageService: TokenStorageService,
-    private toastr: ToastrService,
-    @Inject(DOCUMENT) private document: HTMLDocument
+    private userService: UserService,
+    private tokenStorage: TokenStorageService
   ) {
 
     //Controllo se l'utente è loggato e vuole essere ricordato, altrimenti elimino i cookie
     //this.authenticationService.firstCheckIsLogged();
 
+    // Valorizzo l'utente attualmente loggato
+    this.userService.getUser(this.tokenStorage.getUserId()).subscribe(res => {
+      this.userService.loggedUser$.next(res);
+    });
     // Sidenav state
     this._sidenavService.sideNavState$.subscribe((res) => {
       this.onSideNavChange = res;

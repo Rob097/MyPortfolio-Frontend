@@ -1,6 +1,13 @@
 <header>
-  <h2>Hi!</h2>
+  <h2 class="m-auto">Signed in as</h2>
+  <p>{{user?.email}}</p>
 </header>
 <mat-dialog-content>
   <p>This component works!</p>
 </mat-dialog-content>
+<footer>
+  <button class="mat-menu-button" (click)="logout()">
+    <mat-icon class="mat-menu-icon">logout</mat-icon>
+    <span>Sign out</span>
+  </button>
+</footer>
