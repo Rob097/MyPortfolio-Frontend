@@ -39,7 +39,7 @@
 <ng-container *ngIf="user != null; else notLogged">
   <div id="profile">
     <!-- HEADER -->
-    <div class="flex flex-col shadow bg-card">
+    <mat-card class="p-0 rounded-zero">
       <div>
         <img
           style="width:100%;"
@@ -48,24 +48,12 @@
           class="h-40 lg:h-80 object-cover"
         />
       </div>
-      <div
-        class="
-          flex flex-col flex-0
-          lg:flex-row
-          items-center
-          max-w-5xl
-          w-full
-          mx-auto
-          px-8
-          lg:h-18
-          bg-card
-        "
-      >
-        <div class="-mt-26 lg:-mt-22 rounded-full">
+      <div class="flex flex-col lg:flex-row items-center mx-auto px-8 lg:h-18">
+        <div class="-mt-26 lg:-mt-22">
           <img
             src="assets/images/avatars/Velazquez.jpg"
             alt="User avatar"
-            class="w-32 h-32 rounded-full ring-4 ring-bg-card"
+            class="w-32 h-32 rounded-full ring-4"
           />
         </div>
         <div
@@ -74,7 +62,7 @@
           <div class="text-lg font-bold leading-none">{{user.name}} {{user.surname}}</div>
           <div class="text-secondary">{{user.address}}</div>
         </div>
-        <div class="hidden lg:flex h-8 mx-8 border-l-2"></div>
+        <mat-divider vertical class="hidden border-r-2 lg:flex h-8 mx-8"></mat-divider>
         <div class="flex items-center mt-6 lg:mt-0 space-x-6">
           <div class="flex flex-col items-center">
             <span class="font-bold">200k</span
@@ -92,7 +80,7 @@
           ><a class="text-secondary" href="/pages/profile"> Gallery </a>
         </div>
       </div>
-    </div>
+    </mat-card>
     <!-- / HEADER -->
 
     <!-- CONTENT --

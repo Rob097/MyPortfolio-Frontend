@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { MaterialModule } from "src/app/material.module";
 import { DialogsService } from "src/app/services/dialogs.service";
 import { DialogComponent } from "./dialog.component";
@@ -10,7 +11,8 @@ import { UserMenuDialogComponent } from './user-menu-dialog/user-menu-dialog.com
       UserMenuDialogComponent
   ],
   imports     : [
-      MaterialModule
+      MaterialModule,
+      RouterModule
   ],
   providers   : [
       DialogsService

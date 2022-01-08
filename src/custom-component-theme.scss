@@ -1,4 +1,5 @@
 @import './app/components/structure/structure.theme.scss';
+@import './app/components/shared/dialog/dialog.theme.scss';
 
 @import "/src/app/components/profile/tabs/about/about.theme.scss";
 @import "/src/app/components/profile/tabs/photos-videos/photos-videos.theme";
@@ -8,6 +9,7 @@
 
   // Structure
   @include structure-theme($theme);
+  @include dialog-theme($theme);
 
   // Pages
   @include profile-about-theme($theme);

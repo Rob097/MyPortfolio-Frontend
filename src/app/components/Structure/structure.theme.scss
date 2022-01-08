@@ -4,26 +4,39 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
+  $background-sidebar-toolbar: #293f4a;
+
   /* Sidenav styles */
   .mat-sidenav{
-    background-color: mat-color($primary, 300);
-    color: mat-contrast($primary, 50) !important;
-  }
-  .mat-list-item{
-    color: mat-contrast($primary, 50) !important;
+    background-color: $background-sidebar-toolbar;
+    color: mat-color($accent, 25) !important;
   }
   .mat-sidenav-container{
-    background-color: mat-color($primary, 300);
+    background-color: $background-sidebar-toolbar;
   }
+
+  .mat-list-item{
+    color: mat-color($accent, 25) !important;
+  }
+  .mat-icon{
+    color: mat-color($accent, 400) !important;
+  }
+
   .mat-sidenav-content{
     background-color: mat-color($primary, 50);
-    color: mat-contrast($primary, 50) !important;
+    color: mat-contrast($accent, 25) !important;
   }
 
   /* Header Toolbar styles */
   .mat-toolbar.mat-primary{
-    background-color: mat-color($primary, 300);
-    color: mat-contrast($primary, 50) !important;
+    background-color: $background-sidebar-toolbar;
+    color: mat-color($accent, 25) !important;
+  }
+
+  /* Mat Cards */
+  .mat-card{
+    background-color: mat-color($primary, 25) !important;
+    color: mat-contrast($accent, 25) !important;
   }
 
 }

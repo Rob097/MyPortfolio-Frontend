@@ -3,7 +3,10 @@
   <p>{{user?.email}}</p>
 </header>
 <mat-dialog-content>
-  <p>This component works!</p>
+  <button class="mat-menu-button" routerLink="/profile">
+    <mat-icon class="mat-menu-icon">account_circle</mat-icon>
+    <span>Profile</span>
+  </button>
 </mat-dialog-content>
 <footer>
   <button class="mat-menu-button" (click)="logout()">

@@ -3,3 +3,14 @@
 .sidenav_container {
   height: calc(100vh - #{$sidenav-content-height-gap});
 }
+
+::ng-deep .mat-sidenav {
+
+  mat-list-item:hover{
+    background-color: transparent !important;
+  }
+  mat-list-item a:hover{
+    background-color: rgb(255 255 255 / 12%) !important;
+  }
+
+}

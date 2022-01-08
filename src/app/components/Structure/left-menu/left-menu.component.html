@@ -3,7 +3,7 @@
     <div>
 
       <div class="flex flex-col items-center w-full p-4 ng-tns-c50-1">
-        <div class="relative" [ngClass]="linkText ? 'w-24 h-24' : 'w-05 h-05'">
+        <div class="relative" [ngClass]="linkText ? 'w-24 h-24' : 'w-05 h-025'">
           <img alt="User avatar" class="w-full h-full rounded-full ng-star-inserted"
             src="assets/images/avatars/Velazquez.jpg">
         </div>
@@ -25,8 +25,8 @@
 
       <mat-nav-list>
         <mat-list-item *ngFor="let page of pages">
-          <a mat-list-item [routerLink]="page?.link">
-            <mat-icon style="padding-right: 5px" matTooltip="{{page?.name}}" matTooltipPosition="right">{{ page?.icon }}
+          <a class="rounded-6" mat-list-item [routerLink]="page?.link">
+            <mat-icon [ngClass]="linkText ? 'mr-8' : ''" matTooltip="{{page?.name}}" matTooltipPosition="right" matTooltipClass="custom-tooltip">{{ page?.icon }}
             </mat-icon>
             <span [@animateText]="linkText ? cs.show : cs.hide">{{
               page?.name

@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@mixin dialog-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .mat-dialog-container{
+    background-color: mat-color($primary, 25) !important;
+    color: mat-contrast($accent, 25) !important;
+  }
+
+}
