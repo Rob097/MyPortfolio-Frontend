@@ -74,36 +74,21 @@
           </div>
         </div>
         <div class="flex items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
-          <a class="font-medium" href="/pages/profile"> Home </a
-          ><a class="text-secondary" href="/pages/profile"> About </a
-          ><a class="text-secondary" href="/pages/profile"> Followers </a
-          ><a class="text-secondary" href="/pages/profile"> Gallery </a>
+          <a class="font-medium" [routerLink]="'about'" routerLinkActive="is-active"> About </a>
+          <a class="text-secondary" [routerLink]="'timeline'"> Timeline </a>
+          <a class="text-secondary" [routerLink]="'media'"> Gallery </a>
         </div>
       </div>
     </mat-card>
     <!-- / HEADER -->
 
-    <!-- CONTENT --
+    <!-- CONTENT -->
   <div class="content">
 
-      <mat-tab-group dynamicHeight="true">
-
-          <mat-tab label="Timeline">
-              <profile-timeline></profile-timeline>
-          </mat-tab>
-
-          <mat-tab label="About">
-              <profile-about></profile-about>
-          </mat-tab>
-
-          <mat-tab label="Photos & Videos">
-              <profile-photos-videos></profile-photos-videos>
-          </mat-tab>
-
-      </mat-tab-group>
+    <router-outlet></router-outlet>
 
   </div>
-  <!- / CONTENT -->
+  <!-- / CONTENT -->
   </div>
 </ng-container>
 <ng-template #notLogged>

@@ -11,13 +11,35 @@ import { CommonModule } from '@angular/common';
 
 
 const routes = [
-    {
-        path     : '',
-        component: ProfileComponent,
-        resolve  : {
-            profile: ProfileService
-        }
-    }
+
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'about'
+            },
+            {
+                path: 'about',
+                component: ProfileAboutComponent,
+                resolve  : {
+                    profile: ProfileService
+                }
+            },
+            {
+                path: 'timeline',
+                component: ProfileTimelineComponent,
+                resolve  : {
+                    profile: ProfileService
+                }
+            },
+            {
+                path: 'media',
+                component: ProfilePhotosVideosComponent,
+                resolve  : {
+                    profile: ProfileService
+                }
+            }
+
+
 ];
 
 @NgModule({

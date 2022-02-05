@@ -19,7 +19,7 @@
               placeholder="Es. mRossi97"
               formControlName="username"
             />
-            <mat-hint>Username valido, grande!</mat-hint>
+            <mat-hint *ngIf="username.dirty">Username valido, grande!</mat-hint>
             <mat-error *ngIf="username.hasError('minlength') && !username.hasError('required')">
               Inserisci un username valido
             </mat-error>
@@ -38,7 +38,7 @@
               placeholder="Es. mario.rossi@gmail.com"
               formControlName="email"
             />
-            <mat-hint>Email valida, grande!</mat-hint>
+            <mat-hint *ngIf="email.dirty">Email valida, grande!</mat-hint>
             <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
               Inserisci un'email valida
             </mat-error>
@@ -56,7 +56,7 @@
               placeholder="Password"
               formControlName="password"
             />
-            <mat-hint>Password valida, grande!</mat-hint>
+            <mat-hint *ngIf="password.dirty">Password valida, grande!</mat-hint>
             <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
               Il numero minimo di caratteria è {{ minPasswordLength }}
             </mat-error>
