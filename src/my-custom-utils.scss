@@ -65,9 +65,17 @@
 .p-0{
   padding: 0 !important;
 }
+.p-6 {
+  padding: 1.5rem!important;
+}
 .px-8 {
   padding-left: 2rem !important;
   padding-right: 2rem !important;
+}
+@media (min-width: 600px){
+  .sm\:p-8 {
+    padding: 2rem!important;
+  }
 }
 
 /* BORDERS */
@@ -94,6 +102,9 @@
 .font-medium {
   font-weight: 500 !important;
 }
+.font-semibold {
+  font-weight: 600!important;
+}
 .font-bold {
   font-weight: 700!important;
 }
@@ -108,6 +119,9 @@
 }
 .text-ellipsis {
   text-overflow: ellipsis !important;
+}
+.leading-tight {
+  line-height: 1.25!important;
 }
 
 .flex-col {
@@ -149,12 +163,15 @@
 }
 
 
-
+/* WIDTH */
 .w-025 {
   width: 1rem !important;
 }
 .w-05 {
   width: 2rem !important;
+}
+.w-12 {
+  width: 3rem!important;
 }
 .w-24 {
   width: 6rem !important;
@@ -162,11 +179,19 @@
 .w-32 {
   width: 8rem !important;
 }
+.min-w-12 {
+  min-width: 3rem!important;
+}
+
+/* HEIGHT */
 .h-025 {
   height: 1rem !important;
 }
 .h-05 {
   height: 2rem !important;
+}
+.h-12 {
+  height: 3rem!important;
 }
 .h-24 {
   height: 6rem !important;

@@ -5,6 +5,7 @@
 @import "./typography.scss";
 @import "./fonts.scss";
 @import "./my-custom-utils.scss";
+@import "/src/app/components/shared/variables";
 
 @import './assets/styles/bootstrap.min.css';
 
@@ -88,10 +89,22 @@ a{
 }
 
 
-
+mat-card{
+  border-radius: $mat-card-rounded-1 !important;
+}
 mat-card-title {
   display: flex;
   justify-content: center;
+}
+
+.mat-button, .mat-icon-button{
+  display: inline-flex!important;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  line-height: 1!important;
 }
 
 /* UTILS */
