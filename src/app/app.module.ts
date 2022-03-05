@@ -35,6 +35,8 @@ import { FakeDbService } from './fake-db/fake-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DialogComponent } from './components/shared/dialog/dialog.component';
 import { DialogModule } from './components/shared/dialog/dialog.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { InfoComponent } from './components/info/info.component';
 
 /* Main module of the application.
 In this module are declared the main components of the application.
@@ -48,7 +50,9 @@ In here are also imported the various module used for the different functionalit
     AppComponent,
     HeaderComponent,
     LeftMenuComponent,
-    RightMenuComponent
+    RightMenuComponent,
+    DashboardComponent,
+    InfoComponent
   ],
   imports: [
     /*AngularFireModule.initializeApp(environment.firebase),
