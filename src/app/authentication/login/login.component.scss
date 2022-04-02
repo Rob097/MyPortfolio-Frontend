@@ -1,33 +1,33 @@
-mat-card {
-  background-color: transparent;
-  box-shadow: none !important;
-}
+// mat-card {
+//   background-color: transparent;
+//   box-shadow: none !important;
+// }
 
 .mat-form-field {
   width: 100%;
   min-width: 300px;
 }
 
-$breakpoint-tablet: 1024px;
-@media (max-width: $breakpoint-tablet) {
-  mat-card{
-    display: block !important;
-  }
-}
+// $breakpoint-tablet: 1024px;
+// @media (max-width: $breakpoint-tablet) {
+//   mat-card{
+//     display: block !important;
+//   }
+// }
 
-mat-card{
-  display: flex;
-  box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%) !important;
-  border-radius: 10px !important;
-  padding: 50px;
-  margin: 25px;
-}
-.inner-card{
-  margin: 25px 25px 25px 25px !important;
-}
-.mat-card-header-text{
-  margin: auto auto !important;
-}
+// mat-card{
+//   display: flex;
+//   box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%) !important;
+//   border-radius: 10px !important;
+//   padding: 50px;
+//   margin: 25px;
+// }
+// .inner-card{
+//   margin: 25px 25px 25px 25px !important;
+// }
+// .mat-card-header-text{
+//   margin: auto auto !important;
+// }
 
 
 .error {

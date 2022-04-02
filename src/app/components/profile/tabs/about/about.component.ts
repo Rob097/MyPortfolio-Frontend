@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,6 +15,12 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
 {
     about: any;
 
+    isSeeAllBio: boolean = false;
+    isSeeAllSkills: boolean = false;
+
+    shortBio: string = 'I’m a curious and ambitious web programmer. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips.   I like learning new stuff every day and challenge myself.';
+    longBio: string = 'I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips. I love travel all over the world and learn everythings of the different cultures from the people I meet along my trips.';
+
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -23,7 +30,8 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
      * @param {ProfileService} _profileService
      */
     constructor(
-        private _profileService: ProfileService
+        private _profileService: ProfileService,
+        @Inject(DOCUMENT) document: Document
     )
     {
         // Set the private defaults
@@ -55,4 +63,22 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
+
+    toggleSeeAll(element: any): void {
+
+        switch (element) {
+            case 'bio':
+                this.isSeeAllBio = !this.isSeeAllBio;
+                this.isSeeAllSkills = false;
+                break;
+            case 'skills':
+                this.isSeeAllSkills = !this.isSeeAllSkills;
+                this.isSeeAllBio = false;
+                break;
+        }
+
+        document.getElementById('topAboutSection')!.scrollIntoView({ behavior: 'smooth' });
+
+    }
+
 }

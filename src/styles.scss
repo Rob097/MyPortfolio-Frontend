@@ -6,6 +6,7 @@
 @import "./fonts.scss";
 @import "./my-custom-utils.scss";
 @import "/src/app/components/shared/variables";
+@import "/src/app/components/shared/card";
 
 @import './assets/styles/bootstrap.min.css';
 
@@ -55,13 +56,13 @@ button.main-button{
   display: block;
   margin: 10px auto 10px auto !important;
   background-color: transparent !important;
-  color: #f9a826 !important;
-  height: 50px;
+  color: #ff9c7c !important;
+  height: inherit;
   transition-duration: 0.75s;
 }
 button.main-button:hover {
   color: #ffffff !important;
-  background-color: #f9a826 !important;
+  background-color: #293f4a !important;
   transform: translateY(-1px);
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }

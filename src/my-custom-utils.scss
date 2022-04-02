@@ -152,9 +152,6 @@
 .max-w-5xl {
   max-width: 64rem !important;
 }
-.w-full {
-  width: 100% !important;
-}
 .flex {
   display: flex !important;
 }
@@ -167,6 +164,12 @@
 
 
 /* WIDTH */
+.w-full {
+  width: 100% !important;
+}
+.w-00{
+  width: 0 !important;
+}
 .w-025 {
   width: 1rem !important;
 }
@@ -188,11 +191,29 @@
 .w-32 {
   width: 8rem !important;
 }
+.w-080 {
+  width: 80% !important;
+}
 .min-w-12 {
   min-width: 3rem!important;
 }
+.w-40pc{
+  width: 40% !important;
+}
+.vw-50{
+  width: 50vw !important;
+}
+.vw-62-5{
+  width: 62.5vw !important;
+}
 
 /* HEIGHT */
+.h-full {
+  height: 100% !important;
+}
+.h-00{
+  height: 0 !important;
+}
 .h-025 {
   height: 1rem !important;
 }
@@ -201,6 +222,9 @@
 }
 .h-6 {
   height: 1.5rem!important;
+}
+.h-8 {
+  height: 2rem !important;
 }
 .h-10 {
   height: 2.5rem!important;
@@ -217,14 +241,22 @@
 .h-80 {
   height: 20rem!important;
 }
+.vh-80{
+  height: 80vh !important;
+}
+
+/* POSITION */
+.abs{
+  position: absolute !important;
+}
+
+
 .ring-bg-card {
   --tw-ring-opacity: 1 !important;
   --tw-ring-color: rgba(255, 255, 255, 1) !important;
 }
 
-.h-8 {
-  height: 2rem !important;
-}
+
 .hidden {
   display: none !important;
 }
@@ -281,9 +313,19 @@
   align-items: center;
   height: 100%;
 }
-mat-card.style-1{
-  max-width: 350px;
-  border-radius: 10px !important;
-  padding: 25px;
-  margin: 25px;
+.shadow-15{
+  box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%) !important;
+}
+// mat-card.style-1{
+//   max-width: 350px;
+//   border-radius: 10px !important;
+//   padding: 25px;
+//   margin: 25px;
+// }
+
+.vertical-scroll{
+  overflow-y: scroll;
+}
+.left-15vw{
+  left: 15vw !important;
 }

@@ -1,0 +1,41 @@
+
+
+mat-card.style-1 {
+    max-width: 350px;
+    border-radius: 10px !important;
+    padding: 25px;
+    margin: 25px;
+}
+mat-card.style-2 {
+    display: flex;
+    border-radius: 10px !important;
+    padding: 50px;
+    margin: 25px;
+}
+mat-card.style-3 {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+
+mat-card.card-hover-pointer:hover {
+    box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%) !important;
+    cursor: pointer;
+}
+
+
+
+
+.inner-card {
+    margin: 25px 25px 25px 25px !important;
+}
+.mat-card-header-text {
+    margin: auto auto !important;
+}
+
+
+@media (max-width: $breakpoint-tablet) {
+    mat-card.style-2{
+        display: block !important;
+    }
+}
