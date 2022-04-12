@@ -47,3 +47,43 @@
   }
 
 }
+
+.container .cardWrap div{
+  height: 300px;
+  border:2px solid gray;
+  }
+.zero{
+  width:100%;
+  height:100%;
+  background-color:rgba(255, 255, 255, 0.819);
+}
+.one{
+  width:100px;
+  height:100px;
+  background-color:orange;
+}
+.two{
+  width:300px;
+  height:300px;
+  background-color:gray;
+}
+.three{
+  width:100px;
+  height:100px;
+  background-color:yellow;
+}
+.two_one{
+  width:100px;
+  height:100px;
+  background-color:red;
+}
+.two_two{
+  width:100px;
+  height:100px;
+  background-color:blue;
+}
+.two_three{
+  width:100px;
+  height:100px;
+  background-color:green;
+}

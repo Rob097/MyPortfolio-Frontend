@@ -23,14 +23,16 @@ mat-card.card-hover-pointer:hover {
     cursor: pointer;
 }
 
+mat-card-title h3 {
+    line-height: 1.25 !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
 
 
 
 .inner-card {
     margin: 25px 25px 25px 25px !important;
-}
-.mat-card-header-text {
-    margin: auto auto !important;
 }
 
 

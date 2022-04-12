@@ -78,8 +78,7 @@ In here are also imported the various module used for the different functionalit
       delay: 0,
       passThruUnknownUrl: true,
     }),
-    DialogModule,
-    FlexLayoutModule
+    DialogModule
   ],
   providers: [
     interceptorProviders,

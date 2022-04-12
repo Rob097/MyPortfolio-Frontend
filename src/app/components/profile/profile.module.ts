@@ -8,6 +8,7 @@ import { ProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos
 import { ProfileTimelineComponent } from './tabs/timeline/timeline.component';
 import { MaterialModule } from 'src/app/material.module';
 import { CommonModule } from '@angular/common';
+import { FlexModule } from '@angular/flex-layout';
 
 
 const routes = [
@@ -52,7 +53,8 @@ const routes = [
     imports     : [
         RouterModule.forChild(routes),
         MaterialModule,
-        CommonModule
+        CommonModule,
+        FlexModule
     ],
     providers   : [
         ProfileService
