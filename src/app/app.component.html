@@ -31,7 +31,7 @@
     </mat-sidenav>
 
     <!-- CONTENT -->
-    <mat-sidenav-content [ngClass]="!sideNavVisible ? 'rounded-zero' : ''" [ngStyle]="{'border-top-left-radius': radius +'px', 'border-left': '1px solid rgb(108 117 125 / 60%)', 'border-top': '1px solid rgb(108 117 125 / 60%)'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
+    <mat-sidenav-content id="sidenavContent" [ngClass]="!sideNavVisible ? 'rounded-zero' : ''" [ngStyle]="{'border-top-left-radius': radius +'px', 'border-left': '1px solid rgb(108 117 125 / 60%)', 'border-top': '1px solid rgb(108 117 125 / 60%)'}" [@onMainContentChange]="check()" (scroll)="onScroll($event)">
 
           <!-- PAGES -->
           <router-outlet></router-outlet>

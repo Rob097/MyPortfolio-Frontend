@@ -50,6 +50,10 @@
   margin: 0.125rem!important;
 }
 
+.mx-3-100 {
+  margin-inline: 3% !important;
+}
+
 @media (min-width: 1280px) {
   .lg\:-mt-22 {
     margin-top: -5.5rem !important;
@@ -255,6 +259,14 @@
 /* POSITION */
 .abs{
   position: absolute !important;
+}
+.relative{
+  position: relative !important;
+}
+
+/* DISPLAY */
+.table{
+  display: table !important;
 }
 
 
