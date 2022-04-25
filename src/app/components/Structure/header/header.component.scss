@@ -7,3 +7,24 @@
 .mat-slide-toggle{
   margin: auto 10px auto 10px;
 }
+mat-select#selectedLang{
+  width: 50px !important;
+  vertical-align: super;
+}
+::ng-deep .mat-form-field-infix{
+  width: auto !important;
+}
+
+mat-toolbar-row{
+  height: $header-height !important;
+  overflow-x: scroll;
+}
+/*Hide scrollbar*/
+mat-toolbar-row::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+mat-toolbar-row {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

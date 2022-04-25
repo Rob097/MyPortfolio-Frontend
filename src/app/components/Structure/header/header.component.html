@@ -13,20 +13,23 @@
         brightness_6
       </mat-icon>
     </button>
-    <mat-form-field appearance="fill">
-      <mat-label>Language</mat-label>
-      <mat-select
-        #selectedLang
-        (selectionChange)="switchLang(selectedLang.value)"
-        [(value)]="selectedLanguage"
-      >
-        <mat-option
-          *ngFor="let language of getLangs()"
-          [value]="language"
+    <ng-container #languageDiv>
+      <mat-form-field>
+        <mat-icon class="mr-3">language</mat-icon>
+        <mat-select
+          #selectedLang
+          id="selectedLang"
+          (selectionChange)="switchLang(selectedLang.value)"
+          [(value)]="selectedLanguage"
         >
-          {{ language }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+          <mat-option
+            *ngFor="let language of getLangs()"
+            [value]="language"
+          >
+            {{ language }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>

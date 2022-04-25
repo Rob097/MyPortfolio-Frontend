@@ -7,3 +7,7 @@
 mat-sidenav#leftSidenav{
   box-shadow: none !important;
 }
+
+mat-sidenav-content{
+  overflow-x: hidden !important;
+}

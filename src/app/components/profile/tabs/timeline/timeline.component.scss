@@ -2,7 +2,7 @@
 
 profile-timeline {
 
-    #timeline {
+    /*#timeline {
         max-width: 1200px;
 
         .timeline-content {
@@ -184,7 +184,7 @@ profile-timeline {
 
             /*@include media-breakpoint('lt-md') {
                 padding: 32px 0 0 0;
-            }*/
+            }*
 
             .latest-activity {
 
@@ -211,10 +211,10 @@ profile-timeline {
                 }
             }
         }
-    }
+    }*/
 
     // Profile boxes
-    .profile-box {
+    /*.profile-box {
         border-radius: 4px;
         overflow: hidden;
         margin-bottom: 16px;
@@ -257,5 +257,5 @@ profile-timeline {
                 }
             }
         }
-    }
+    }*/
 }
